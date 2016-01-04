@@ -11,7 +11,6 @@ Rails.application.routes.draw do
   get 'admin' => 'messages#admin'
   post 'admin' => 'messages#admin'
   delete 'messages/delete' => 'messages#delete'
-  get 'error' => 'application#error'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

@@ -5737,3 +5737,1901 @@ Processing by MessagesController#index as HTML
   [1m[36mMessage Load (0.2ms)[0m  [1mSELECT "messages".* FROM "messages"[0m
   Rendered messages/index.html.erb within layouts/application (1.5ms)
 Completed 200 OK in 18ms (Views: 16.7ms | ActiveRecord: 0.4ms)
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (2.3ms)[0m  [1mDROP TABLE "users"[0m
+  [1m[35mSQL (0.3ms)[0m  DELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = $1  [["version", "20160101223806"]]
+  [1m[36m (1.9ms)[0m  [1mCOMMIT[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (6.7ms)[0m  [1mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'messages'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (4.0ms)[0m  CREATE TABLE "users" ("id" serial primary key, "first_name" character varying, "last_name" character varying, "email" character varying, "password_digest" character varying, "role" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) 
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ($1)[0m  [["version", "20160101223806"]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (1.5ms)[0m  SELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'messages'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+
+  [1m[36m (2.1ms)[0m  [1mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'users'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+
+
+Started GET "/" for ::1 at 2016-01-04 13:40:15 +0200
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by SessionsController#new as HTML
+  Rendered sessions/new.html.erb within layouts/application (7.6ms)
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 1]]
+Completed 500 Internal Server Error in 223ms (ActiveRecord: 2.4ms)
+
+ActiveRecord::RecordNotFound (Couldn't find User with 'id'=1):
+  app/controllers/application_controller.rb:9:in `current_user'
+  app/views/layouts/application.html.erb:12:in `_app_views_layouts_application_html_erb___2319659072707676921_70215508058760'
+
+
+  Rendered /Users/vladyslav/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (10.1ms)
+  Rendered /Users/vladyslav/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (4.5ms)
+  Rendered /Users/vladyslav/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.2ms)
+  Rendered /Users/vladyslav/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (73.9ms)
+  Rendered /Users/vladyslav/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_markup.html.erb (0.8ms)
+  Rendered /Users/vladyslav/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (1.3ms)
+  Rendered /Users/vladyslav/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.6ms)
+  Rendered /Users/vladyslav/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/vladyslav/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/console.js.erb within layouts/javascript (58.6ms)
+  Rendered /Users/vladyslav/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (0.5ms)
+  Rendered /Users/vladyslav/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/vladyslav/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (126.4ms)
+  [1m[36m (5035.1ms)[0m  [1mDROP DATABASE IF EXISTS "messaging_app_protected"[0m
+  [1m[35m (5037.7ms)[0m  DROP DATABASE IF EXISTS "messaging_app_protected"
+  [1m[36m (0.7ms)[0m  [1mCREATE DATABASE "messaging_app_protected" ENCODING = 'utf8'[0m
+  [1m[35m (0.7ms)[0m  CREATE DATABASE "messaging_app_protected" ENCODING = 'utf8'
+  [1m[36mSQL (1.0ms)[0m  [1mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (2.3ms)[0m  DROP TABLE "messages" CASCADE
+  [1m[36m (4.2ms)[0m  [1mCREATE TABLE "messages" ("id" serial primary key, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "content" text) [0m
+  [1m[35m (1.6ms)[0m  DROP TABLE "users" CASCADE
+  [1m[36m (2.6ms)[0m  [1mCREATE TABLE "users" ("id" serial primary key, "first_name" character varying, "last_name" character varying, "email" character varying, "password_digest" character varying, "role" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) [0m
+  [1m[35m (0.3ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36mSQL (0.2ms)[0m  [1mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (1.8ms)[0m  DROP TABLE "messages" CASCADE
+  [1m[36m (2.8ms)[0m  [1mCREATE TABLE "messages" ("id" serial primary key, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "content" text) [0m
+  [1m[35m (1.5ms)[0m  DROP TABLE "users" CASCADE
+  [1m[36m (3.2ms)[0m  [1mCREATE TABLE "users" ("id" serial primary key, "first_name" character varying, "last_name" character varying, "email" character varying, "password_digest" character varying, "role" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) [0m
+  [1m[35m (0.2ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36m (118.6ms)[0m  [1mDROP DATABASE IF EXISTS "messaging_app_protected"[0m
+  [1m[35m (0.2ms)[0m  DROP DATABASE IF EXISTS "messaging_app_protected"
+  [1m[36m (334.9ms)[0m  [1mCREATE DATABASE "messaging_app_protected" ENCODING = 'utf8'[0m
+  [1m[35m (0.8ms)[0m  CREATE DATABASE "messaging_app_protected" ENCODING = 'utf8'
+  [1m[36mSQL (0.2ms)[0m  [1mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (4.3ms)[0m  CREATE TABLE "messages" ("id" serial primary key, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "content" text) 
+  [1m[36m (2.8ms)[0m  [1mCREATE TABLE "users" ("id" serial primary key, "first_name" character varying, "last_name" character varying, "email" character varying, "password_digest" character varying, "role" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) [0m
+  [1m[35m (1.5ms)[0m  CREATE TABLE "schema_migrations" ("version" character varying NOT NULL) 
+  [1m[36m (1.0ms)[0m  [1mCREATE UNIQUE INDEX  "unique_schema_migrations" ON "schema_migrations"  ("version")[0m
+  [1m[35m (0.2ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36m (0.3ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20160102220819')[0m
+  [1m[35m (0.3ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20160101223806')
+  [1m[36mSQL (0.2ms)[0m  [1mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (2.0ms)[0m  DROP TABLE "messages" CASCADE
+  [1m[36m (3.5ms)[0m  [1mCREATE TABLE "messages" ("id" serial primary key, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "content" text) [0m
+  [1m[35m (1.1ms)[0m  DROP TABLE "users" CASCADE
+  [1m[36m (3.0ms)[0m  [1mCREATE TABLE "users" ("id" serial primary key, "first_name" character varying, "last_name" character varying, "email" character varying, "password_digest" character varying, "role" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) [0m
+  [1m[35m (0.3ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (1.8ms)[0m  [1mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'messages'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+  [1m[35m (1.8ms)[0m  SELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'users'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+
+
+
+Started GET "/" for ::1 at 2016-01-04 13:41:52 +0200
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by SessionsController#new as HTML
+  Rendered sessions/new.html.erb within layouts/application (7.2ms)
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 1]]
+Completed 500 Internal Server Error in 195ms (ActiveRecord: 2.3ms)
+
+ActiveRecord::RecordNotFound (Couldn't find User with 'id'=1):
+  app/controllers/application_controller.rb:9:in `current_user'
+  app/views/layouts/application.html.erb:12:in `_app_views_layouts_application_html_erb__1648419628304365770_70161786233980'
+
+
+  Rendered /Users/vladyslav/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (10.6ms)
+  Rendered /Users/vladyslav/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (4.4ms)
+  Rendered /Users/vladyslav/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.5ms)
+  Rendered /Users/vladyslav/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (67.0ms)
+  Rendered /Users/vladyslav/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_markup.html.erb (0.3ms)
+  Rendered /Users/vladyslav/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.6ms)
+  Rendered /Users/vladyslav/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.5ms)
+  Rendered /Users/vladyslav/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/vladyslav/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/console.js.erb within layouts/javascript (48.0ms)
+  Rendered /Users/vladyslav/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/vladyslav/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/vladyslav/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (115.6ms)
+
+
+Started GET "/" for ::1 at 2016-01-04 13:45:23 +0200
+Processing by SessionsController#new as HTML
+  Rendered sessions/new.html.erb within layouts/application (0.7ms)
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+Completed 500 Internal Server Error in 29ms (ActiveRecord: 1.6ms)
+
+ActiveRecord::RecordNotFound (Couldn't find User with 'id'=1):
+  app/controllers/application_controller.rb:9:in `current_user'
+  app/views/layouts/application.html.erb:12:in `_app_views_layouts_application_html_erb__1648419628304365770_70161786233980'
+
+
+  Rendered /Users/vladyslav/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (4.5ms)
+  Rendered /Users/vladyslav/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.9ms)
+  Rendered /Users/vladyslav/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.8ms)
+  Rendered /Users/vladyslav/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (55.6ms)
+  Rendered /Users/vladyslav/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_markup.html.erb (0.3ms)
+  Rendered /Users/vladyslav/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/vladyslav/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.5ms)
+  Rendered /Users/vladyslav/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/vladyslav/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/console.js.erb within layouts/javascript (49.9ms)
+  Rendered /Users/vladyslav/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (0.2ms)
+  Rendered /Users/vladyslav/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/vladyslav/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (107.3ms)
+
+
+Started GET "/" for ::1 at 2016-01-04 13:52:43 +0200
+Processing by SessionsController#new as HTML
+  Rendered sessions/new.html.erb within layouts/application (0.8ms)
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 1]]
+Completed 500 Internal Server Error in 26ms (ActiveRecord: 1.7ms)
+
+ActiveRecord::RecordNotFound (Couldn't find User with 'id'=1):
+  app/controllers/application_controller.rb:9:in `current_user'
+  app/views/layouts/application.html.erb:12:in `_app_views_layouts_application_html_erb__1648419628304365770_70161786233980'
+
+
+  Rendered /Users/vladyslav/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (4.9ms)
+  Rendered /Users/vladyslav/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.9ms)
+  Rendered /Users/vladyslav/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.0ms)
+  Rendered /Users/vladyslav/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (53.5ms)
+  Rendered /Users/vladyslav/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_markup.html.erb (0.3ms)
+  Rendered /Users/vladyslav/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/vladyslav/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/vladyslav/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.2ms)
+  Rendered /Users/vladyslav/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/console.js.erb within layouts/javascript (45.1ms)
+  Rendered /Users/vladyslav/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (0.2ms)
+  Rendered /Users/vladyslav/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/vladyslav/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (96.9ms)
+
+
+Started GET "/" for ::1 at 2016-01-04 13:57:50 +0200
+Processing by SessionsController#new as HTML
+  Rendered sessions/new.html.erb within layouts/application (0.8ms)
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+Completed 500 Internal Server Error in 26ms (ActiveRecord: 1.4ms)
+
+ActiveRecord::RecordNotFound (Couldn't find User with 'id'=1):
+  app/controllers/application_controller.rb:9:in `current_user'
+  app/views/layouts/application.html.erb:12:in `_app_views_layouts_application_html_erb__1648419628304365770_70161786233980'
+
+
+  Rendered /Users/vladyslav/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (4.8ms)
+  Rendered /Users/vladyslav/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.1ms)
+  Rendered /Users/vladyslav/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.4ms)
+  Rendered /Users/vladyslav/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (54.5ms)
+  Rendered /Users/vladyslav/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_markup.html.erb (0.2ms)
+  Rendered /Users/vladyslav/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/vladyslav/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.2ms)
+  Rendered /Users/vladyslav/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/vladyslav/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/console.js.erb within layouts/javascript (45.1ms)
+  Rendered /Users/vladyslav/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (0.2ms)
+  Rendered /Users/vladyslav/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/vladyslav/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (96.2ms)
+
+
+Started GET "/" for ::1 at 2016-01-04 14:02:36 +0200
+Processing by SessionsController#new as HTML
+  Rendered sessions/new.html.erb within layouts/application (0.7ms)
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 1]]
+Completed 200 OK in 23ms (Views: 20.3ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/assets/messages.self-1826f31c17a9f711ab573e251263bb3289a28317e2a1a71d459201183e9a10a5.css?body=1" for ::1 at 2016-01-04 14:02:36 +0200
+
+
+Started GET "/assets/sessions.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-01-04 14:02:36 +0200
+
+
+Started GET "/assets/users.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-01-04 14:02:36 +0200
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for ::1 at 2016-01-04 14:02:36 +0200
+
+
+Started GET "/assets/jquery.self-a714331225dda820228db323939889f149aec0127aeb06255646b616ba1ca419.js?body=1" for ::1 at 2016-01-04 14:02:36 +0200
+
+
+Started GET "/assets/jquery_ujs.self-d456baa54c1fa6be2ec3711f0a72ddf7a5b2f34a6b4f515f33767d6207b7d4b3.js?body=1" for ::1 at 2016-01-04 14:02:36 +0200
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for ::1 at 2016-01-04 14:02:36 +0200
+
+
+Started GET "/assets/messages.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-01-04 14:02:36 +0200
+
+
+Started GET "/assets/sessions.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-01-04 14:02:36 +0200
+
+
+Started GET "/assets/users.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-01-04 14:02:36 +0200
+
+
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for ::1 at 2016-01-04 14:02:36 +0200
+
+
+Started POST "/signup" for ::1 at 2016-01-04 14:02:42 +0200
+Processing by UsersController#new as HTML
+  Parameters: {"authenticity_token"=>"9jhVbplICVUWj/NAkITE9jtmoMzVat/IsBTvrXwbhOj2FJ2bkNsiQKgSyOhZ/IaRGBFwLcuyGZo80ck/U3jQuw=="}
+  Rendered users/new.html.erb within layouts/application (4.3ms)
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+Completed 200 OK in 30ms (Views: 24.9ms | ActiveRecord: 0.2ms)
+
+
+Started POST "/users" for ::1 at 2016-01-04 14:02:57 +0200
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"7ceXPr7GTWYGWqstCqJ6W5oUG1artr3sIG3pXJpSgNzt61/Lt1Vmc7jHkIXD2jg8uWPLt7Vue76sqM/OtTHUjw==", "user"=>{"first_name"=>"vlad", "last_name"=>"vlad", "email"=>"vlad@vlad.com", "password"=>"[FILTERED]"}, "commit"=>"Signup"}
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "users" ("first_name", "last_name", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["first_name", "vlad"], ["last_name", "vlad"], ["email", "vlad@vlad.com"], ["password_digest", "$2a$10$VG4zcgz/MCMhgHDFOaEZy.9dnE4da52aeiJRBwxh/wqyex70cIHmG"], ["created_at", "2016-01-04 12:02:57.109020"], ["updated_at", "2016-01-04 12:02:57.109020"]]
+  [1m[35m (1.0ms)[0m  COMMIT
+Redirected to http://localhost:3000/
+Completed 302 Found in 76ms (ActiveRecord: 1.5ms)
+
+
+Started GET "/" for ::1 at 2016-01-04 14:02:57 +0200
+Processing by SessionsController#new as HTML
+  Rendered sessions/new.html.erb within layouts/application (0.6ms)
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+Completed 200 OK in 15ms (Views: 14.4ms | ActiveRecord: 0.2ms)
+
+
+Started DELETE "/logout" for ::1 at 2016-01-04 14:02:59 +0200
+Processing by SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"ztKU4lBfgYSQHOxM9wqwExImRwWz6pAZZVb7IjAixVzO/lwXWcyqkS6B1+Q+cvJ0MVGX5K0yVkvpk92wH0GRDw=="}
+Redirected to http://localhost:3000/
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2016-01-04 14:02:59 +0200
+Processing by SessionsController#new as HTML
+  Rendered sessions/new.html.erb within layouts/application (0.8ms)
+Completed 200 OK in 23ms (Views: 22.6ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/login" for ::1 at 2016-01-04 14:03:10 +0200
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"6zbQEXgJmXDDO/FcXpv+XE7ZEY0jiJW3zl73Drv69fXrGhjkcZqyZX2myvSX47w7ba7BbD1QU+VCm9GclJmhpg==", "session"=>{"email"=>"vlad@vlad.com", "password"=>"[FILTERED]"}, "commit"=>"Log in"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT 1  [["email", "vlad@vlad.com"]]
+Redirected to http://localhost:3000/messages
+Completed 302 Found in 67ms (ActiveRecord: 0.2ms)
+
+
+Started GET "/messages" for ::1 at 2016-01-04 14:03:10 +0200
+Processing by MessagesController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mMessage Load (1.0ms)[0m  SELECT "messages".* FROM "messages"
+  Rendered messages/index.html.erb within layouts/application (11.9ms)
+Completed 200 OK in 36ms (Views: 28.7ms | ActiveRecord: 2.1ms)
+  [1m[36m (113.2ms)[0m  [1mDROP DATABASE IF EXISTS "messaging_app_protected"[0m
+  [1m[35m (0.3ms)[0m  DROP DATABASE IF EXISTS "messaging_app_protected"
+  [1m[36m (255.6ms)[0m  [1mCREATE DATABASE "messaging_app_protected" ENCODING = 'utf8'[0m
+  [1m[35m (0.9ms)[0m  CREATE DATABASE "messaging_app_protected" ENCODING = 'utf8'
+  [1m[36mSQL (0.2ms)[0m  [1mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (4.3ms)[0m  CREATE TABLE "messages" ("id" serial primary key, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "content" text) 
+  [1m[36m (2.7ms)[0m  [1mCREATE TABLE "users" ("id" serial primary key, "first_name" character varying, "last_name" character varying, "email" character varying, "password_digest" character varying, "role" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) [0m
+  [1m[35m (1.9ms)[0m  CREATE TABLE "schema_migrations" ("version" character varying NOT NULL) 
+  [1m[36m (1.1ms)[0m  [1mCREATE UNIQUE INDEX  "unique_schema_migrations" ON "schema_migrations"  ("version")[0m
+  [1m[35m (0.3ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36m (0.5ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20160102220819')[0m
+  [1m[35m (0.4ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20160101223806')
+  [1m[36mSQL (0.2ms)[0m  [1mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (3.8ms)[0m  DROP TABLE "messages" CASCADE
+  [1m[36m (5.3ms)[0m  [1mCREATE TABLE "messages" ("id" serial primary key, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "content" text) [0m
+  [1m[35m (1.1ms)[0m  DROP TABLE "users" CASCADE
+  [1m[36m (3.0ms)[0m  [1mCREATE TABLE "users" ("id" serial primary key, "first_name" character varying, "last_name" character varying, "email" character varying, "password_digest" character varying, "role" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) [0m
+  [1m[35m (0.3ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (1.9ms)[0m  [1mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'messages'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+  [1m[35m (2.5ms)[0m  SELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'users'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+
+
+
+Started GET "/" for ::1 at 2016-01-04 14:07:02 +0200
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by SessionsController#new as HTML
+  Rendered sessions/new.html.erb within layouts/application (6.6ms)
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 1]]
+Completed 200 OK in 217ms (Views: 207.8ms | ActiveRecord: 2.4ms)
+
+
+Started POST "/signup" for ::1 at 2016-01-04 14:07:04 +0200
+Processing by UsersController#new as HTML
+  Parameters: {"authenticity_token"=>"Rk4YkMvB3f6XO2WZ7yx7WwOjYgVk+zhrhFDkZqd9gGpGYtBlwlL26ymmXjEmVDk8INSy5Hoj/jkIlcL0iB7UOQ=="}
+  Rendered users/new.html.erb within layouts/application (3.6ms)
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+Completed 200 OK in 51ms (Views: 46.5ms | ActiveRecord: 0.2ms)
+
+
+Started POST "/users" for ::1 at 2016-01-04 14:07:17 +0200
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"sPbOmhNehQWSCP6UJ+r4BRyeGHp+bINL8cv374p9x6Sw2gZvGs2uECyVxTzukrpiP+nIm2C0RRl9DtF9pR6T9w==", "user"=>{"first_name"=>"vlad", "last_name"=>"vlad", "email"=>"vlad@vlad.com", "password"=>"[FILTERED]"}, "commit"=>"Signup"}
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "users" ("first_name", "last_name", "email", "password_digest", "role", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["first_name", "vlad"], ["last_name", "vlad"], ["email", "vlad@vlad.com"], ["password_digest", "$2a$10$sLC7eIhfm5TM75lgDk8XGOFvLnIdMnPboc0tiCv1Pl4rb1U/m1RY2"], ["role", "lalschik"], ["created_at", "2016-01-04 12:07:17.535046"], ["updated_at", "2016-01-04 12:07:17.535046"]]
+  [1m[35m (0.8ms)[0m  COMMIT
+Redirected to http://localhost:3000/
+Completed 302 Found in 78ms (ActiveRecord: 1.3ms)
+
+
+Started GET "/" for ::1 at 2016-01-04 14:07:17 +0200
+Processing by SessionsController#new as HTML
+  Rendered sessions/new.html.erb within layouts/application (0.7ms)
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+Completed 200 OK in 20ms (Views: 18.9ms | ActiveRecord: 0.3ms)
+  [1m[36m (118.0ms)[0m  [1mDROP DATABASE IF EXISTS "messaging_app_protected"[0m
+  [1m[35m (0.1ms)[0m  DROP DATABASE IF EXISTS "messaging_app_protected"
+  [1m[36m (239.7ms)[0m  [1mCREATE DATABASE "messaging_app_protected" ENCODING = 'utf8'[0m
+  [1m[35m (0.8ms)[0m  CREATE DATABASE "messaging_app_protected" ENCODING = 'utf8'
+  [1m[36mSQL (0.2ms)[0m  [1mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (5.2ms)[0m  CREATE TABLE "messages" ("id" serial primary key, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "content" text) 
+  [1m[36m (3.2ms)[0m  [1mCREATE TABLE "users" ("id" serial primary key, "first_name" character varying, "last_name" character varying, "email" character varying, "password_digest" character varying, "role" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) [0m
+  [1m[35m (1.6ms)[0m  CREATE TABLE "schema_migrations" ("version" character varying NOT NULL) 
+  [1m[36m (1.2ms)[0m  [1mCREATE UNIQUE INDEX  "unique_schema_migrations" ON "schema_migrations"  ("version")[0m
+  [1m[35m (0.2ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36m (0.3ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20160102220819')[0m
+  [1m[35m (0.4ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20160101223806')
+  [1m[36mSQL (0.2ms)[0m  [1mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (1.8ms)[0m  DROP TABLE "messages" CASCADE
+  [1m[36m (4.0ms)[0m  [1mCREATE TABLE "messages" ("id" serial primary key, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "content" text) [0m
+  [1m[35m (1.1ms)[0m  DROP TABLE "users" CASCADE
+  [1m[36m (2.5ms)[0m  [1mCREATE TABLE "users" ("id" serial primary key, "first_name" character varying, "last_name" character varying, "email" character varying, "password_digest" character varying, "role" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) [0m
+  [1m[35m (0.2ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (1.9ms)[0m  [1mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'messages'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+  [1m[35m (1.8ms)[0m  SELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'users'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+
+
+
+Started GET "/" for ::1 at 2016-01-04 14:14:49 +0200
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by SessionsController#new as HTML
+  Rendered sessions/new.html.erb within layouts/application (9.1ms)
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 1]]
+Completed 200 OK in 235ms (Views: 221.0ms | ActiveRecord: 3.9ms)
+
+
+Started GET "/" for ::1 at 2016-01-04 14:14:49 +0200
+Processing by SessionsController#new as HTML
+  Rendered sessions/new.html.erb within layouts/application (0.6ms)
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+Completed 200 OK in 48ms (Views: 46.9ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/signup" for ::1 at 2016-01-04 14:14:51 +0200
+Processing by UsersController#new as HTML
+  Parameters: {"authenticity_token"=>"47dQspmAeA5Yw1Gwh9C8PR+ewizD+DCfK9tv9Wjsl5bjm5hHkBNTG+ZeahhOqP5aPOkSzd0g9s2nHklnR4/DxQ=="}
+  Rendered users/new.html.erb within layouts/application (3.6ms)
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 1]]
+Completed 200 OK in 30ms (Views: 25.5ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/users" for ::1 at 2016-01-04 14:15:00 +0200
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"iHDac9ZuFMWeJ/AEqC0PZeGo2BFuHUYlvbDMXqsHS7+IXBKG3/0/0CC6y6xhVU0Cwt8I8HDFgHcxderMhGQf7A==", "user"=>{"first_name"=>"vlad", "last_name"=>"vlad", "email"=>"vlad@vlad.com", "password"=>"[FILTERED]"}, "commit"=>"Signup"}
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT "users".* FROM "users"[0m
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.0ms)
+
+NoMethodError (undefined method `first_name' for #<ActiveRecord::Relation []>):
+  app/controllers/users_controller.rb:8:in `create'
+
+
+  Rendered /Users/vladyslav/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (8.8ms)
+  Rendered /Users/vladyslav/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.7ms)
+  Rendered /Users/vladyslav/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.8ms)
+  Rendered /Users/vladyslav/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (54.3ms)
+  Rendered /Users/vladyslav/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_markup.html.erb (0.3ms)
+  Rendered /Users/vladyslav/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/vladyslav/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/vladyslav/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/vladyslav/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/console.js.erb within layouts/javascript (49.8ms)
+  Rendered /Users/vladyslav/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (0.2ms)
+  Rendered /Users/vladyslav/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/vladyslav/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (110.9ms)
+  [1m[36m (116.1ms)[0m  [1mDROP DATABASE IF EXISTS "messaging_app_protected"[0m
+  [1m[35m (0.1ms)[0m  DROP DATABASE IF EXISTS "messaging_app_protected"
+  [1m[36m (236.1ms)[0m  [1mCREATE DATABASE "messaging_app_protected" ENCODING = 'utf8'[0m
+  [1m[35m (0.5ms)[0m  CREATE DATABASE "messaging_app_protected" ENCODING = 'utf8'
+  [1m[36mSQL (0.3ms)[0m  [1mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (4.1ms)[0m  CREATE TABLE "messages" ("id" serial primary key, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "content" text) 
+  [1m[36m (2.4ms)[0m  [1mCREATE TABLE "users" ("id" serial primary key, "first_name" character varying, "last_name" character varying, "email" character varying, "password_digest" character varying, "role" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) [0m
+  [1m[35m (1.6ms)[0m  CREATE TABLE "schema_migrations" ("version" character varying NOT NULL) 
+  [1m[36m (0.9ms)[0m  [1mCREATE UNIQUE INDEX  "unique_schema_migrations" ON "schema_migrations"  ("version")[0m
+  [1m[35m (0.3ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36m (0.5ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20160102220819')[0m
+  [1m[35m (0.4ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20160101223806')
+  [1m[36mSQL (0.2ms)[0m  [1mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (1.8ms)[0m  DROP TABLE "messages" CASCADE
+  [1m[36m (3.2ms)[0m  [1mCREATE TABLE "messages" ("id" serial primary key, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "content" text) [0m
+  [1m[35m (1.0ms)[0m  DROP TABLE "users" CASCADE
+  [1m[36m (2.7ms)[0m  [1mCREATE TABLE "users" ("id" serial primary key, "first_name" character varying, "last_name" character varying, "email" character varying, "password_digest" character varying, "role" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) [0m
+  [1m[35m (0.2ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+
+
+Started GET "/" for ::1 at 2016-01-04 14:20:39 +0200
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by SessionsController#new as HTML
+  Rendered sessions/new.html.erb within layouts/application (12.8ms)
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 1]]
+Completed 200 OK in 220ms (Views: 209.2ms | ActiveRecord: 2.7ms)
+
+
+Started POST "/signup" for ::1 at 2016-01-04 14:20:44 +0200
+Processing by UsersController#new as HTML
+  Parameters: {"authenticity_token"=>"WnLIbWYrYs1TnFMxqsNTEXW252kbN5L8Er3/jbaePiBaXgCYb7hJ2O0BaJljuxF2VsE3iAXvVK6eeNkfmf1qcw=="}
+  Rendered users/new.html.erb within layouts/application (6.0ms)
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+Completed 200 OK in 37ms (Views: 32.3ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/users" for ::1 at 2016-01-04 14:20:55 +0200
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Lg+lAPCfoDqPWmjzYn/u/wn66aIYQdaGH3sum+cDWoYuI231+QyLLzHHU1urB6yYKo05QwaZENSTvggJyGAO1Q==", "user"=>{"first_name"=>"vlad", "last_name"=>"vlad", "email"=>"vlad@vlad.com", "password"=>"[FILTERED]"}, "commit"=>"Signup"}
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "users" ("first_name", "last_name", "email", "password_digest", "role", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["first_name", "vlad"], ["last_name", "vlad"], ["email", "vlad@vlad.com"], ["password_digest", "$2a$10$jkBnF2NkmkIJ/kY5vQAYduSwktns3OGDsNARiLdloY/3Sg8mpJdga"], ["role", "lalschik"], ["created_at", "2016-01-04 12:20:55.793046"], ["updated_at", "2016-01-04 12:20:55.793046"]]
+  [1m[35m (0.9ms)[0m  COMMIT
+Redirected to http://localhost:3000/
+Completed 302 Found in 83ms (ActiveRecord: 1.4ms)
+
+
+Started GET "/" for ::1 at 2016-01-04 14:20:55 +0200
+Processing by SessionsController#new as HTML
+  Rendered sessions/new.html.erb within layouts/application (0.7ms)
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+Completed 200 OK in 37ms (Views: 36.0ms | ActiveRecord: 0.2ms)
+  [1m[36m (116.7ms)[0m  [1mDROP DATABASE IF EXISTS "messaging_app_protected"[0m
+  [1m[35m (0.1ms)[0m  DROP DATABASE IF EXISTS "messaging_app_protected"
+  [1m[36m (238.0ms)[0m  [1mCREATE DATABASE "messaging_app_protected" ENCODING = 'utf8'[0m
+  [1m[35m (0.5ms)[0m  CREATE DATABASE "messaging_app_protected" ENCODING = 'utf8'
+  [1m[36mSQL (0.3ms)[0m  [1mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (4.7ms)[0m  CREATE TABLE "messages" ("id" serial primary key, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "content" text) 
+  [1m[36m (2.6ms)[0m  [1mCREATE TABLE "users" ("id" serial primary key, "first_name" character varying, "last_name" character varying, "email" character varying, "password_digest" character varying, "role" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) [0m
+  [1m[35m (1.6ms)[0m  CREATE TABLE "schema_migrations" ("version" character varying NOT NULL) 
+  [1m[36m (1.0ms)[0m  [1mCREATE UNIQUE INDEX  "unique_schema_migrations" ON "schema_migrations"  ("version")[0m
+  [1m[35m (0.3ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36m (0.4ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20160102220819')[0m
+  [1m[35m (0.3ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20160101223806')
+  [1m[36mSQL (0.2ms)[0m  [1mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (1.8ms)[0m  DROP TABLE "messages" CASCADE
+  [1m[36m (3.6ms)[0m  [1mCREATE TABLE "messages" ("id" serial primary key, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "content" text) [0m
+  [1m[35m (1.0ms)[0m  DROP TABLE "users" CASCADE
+  [1m[36m (2.4ms)[0m  [1mCREATE TABLE "users" ("id" serial primary key, "first_name" character varying, "last_name" character varying, "email" character varying, "password_digest" character varying, "role" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) [0m
+  [1m[35m (0.2ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+
+
+Started GET "/" for ::1 at 2016-01-04 14:25:25 +0200
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by SessionsController#new as HTML
+  Rendered sessions/new.html.erb within layouts/application (8.3ms)
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 1]]
+Completed 200 OK in 208ms (Views: 198.7ms | ActiveRecord: 2.6ms)
+
+
+Started POST "/signup" for ::1 at 2016-01-04 14:25:27 +0200
+Processing by UsersController#new as HTML
+  Parameters: {"authenticity_token"=>"NVez4AmQj7u5MXWOSlR5jmcfT5D84Nnlr+yHR60m+9s1e3sVAAOkrgesTiaDLDvpRGifceI4H7cjKaHVgkWviA=="}
+  Rendered users/new.html.erb within layouts/application (3.7ms)
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+Completed 200 OK in 28ms (Views: 23.1ms | ActiveRecord: 0.2ms)
+
+
+Started POST "/users" for ::1 at 2016-01-04 14:25:38 +0200
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"pI922GcqiFIDSI1o8uW/44aAcfaDk+gudIwMP9suHOGko74tbrmjR73VtsA7nf2EpfehF51LLnz4SSqt9E1Isg==", "user"=>{"first_name"=>"vlad", "last_name"=>"vlad", "email"=>"vlad@vlad.com", "password"=>"[FILTERED]"}, "commit"=>"Signup"}
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (1.0ms)[0m  [1mINSERT INTO "users" ("first_name", "last_name", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["first_name", "vlad"], ["last_name", "vlad"], ["email", "vlad@vlad.com"], ["password_digest", "$2a$10$V62S1uHcHYc9apAx3fwP9.1Ui9bxabhvTjYVsHYtuvRBBMwK/LuUy"], ["created_at", "2016-01-04 12:25:38.573728"], ["updated_at", "2016-01-04 12:25:38.573728"]]
+  [1m[35m (1.0ms)[0m  COMMIT
+Redirected to http://localhost:3000/
+Completed 302 Found in 76ms (ActiveRecord: 2.2ms)
+
+
+Started GET "/" for ::1 at 2016-01-04 14:25:38 +0200
+Processing by SessionsController#new as HTML
+  Rendered sessions/new.html.erb within layouts/application (0.8ms)
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+Completed 200 OK in 34ms (Views: 33.1ms | ActiveRecord: 0.2ms)
+  [1m[36m (115.9ms)[0m  [1mDROP DATABASE IF EXISTS "messaging_app_protected"[0m
+  [1m[35m (0.1ms)[0m  DROP DATABASE IF EXISTS "messaging_app_protected"
+  [1m[36m (235.8ms)[0m  [1mCREATE DATABASE "messaging_app_protected" ENCODING = 'utf8'[0m
+  [1m[35m (0.8ms)[0m  CREATE DATABASE "messaging_app_protected" ENCODING = 'utf8'
+  [1m[36mSQL (0.2ms)[0m  [1mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (4.4ms)[0m  CREATE TABLE "messages" ("id" serial primary key, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "content" text) 
+  [1m[36m (2.3ms)[0m  [1mCREATE TABLE "users" ("id" serial primary key, "first_name" character varying, "last_name" character varying, "email" character varying, "password_digest" character varying, "role" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) [0m
+  [1m[35m (1.5ms)[0m  CREATE TABLE "schema_migrations" ("version" character varying NOT NULL) 
+  [1m[36m (0.9ms)[0m  [1mCREATE UNIQUE INDEX  "unique_schema_migrations" ON "schema_migrations"  ("version")[0m
+  [1m[35m (0.3ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36m (0.4ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20160102220819')[0m
+  [1m[35m (0.3ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20160101223806')
+  [1m[36mSQL (0.2ms)[0m  [1mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (2.1ms)[0m  DROP TABLE "messages" CASCADE
+  [1m[36m (3.5ms)[0m  [1mCREATE TABLE "messages" ("id" serial primary key, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "content" text) [0m
+  [1m[35m (1.3ms)[0m  DROP TABLE "users" CASCADE
+  [1m[36m (3.5ms)[0m  [1mCREATE TABLE "users" ("id" serial primary key, "first_name" character varying, "last_name" character varying, "email" character varying, "password_digest" character varying, "role" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) [0m
+  [1m[35m (0.3ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+
+
+Started GET "/" for ::1 at 2016-01-04 14:26:30 +0200
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by SessionsController#new as HTML
+  Rendered sessions/new.html.erb within layouts/application (8.5ms)
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 1]]
+Completed 200 OK in 175ms (Views: 165.3ms | ActiveRecord: 3.1ms)
+
+
+Started GET "/assets/messages.self-1826f31c17a9f711ab573e251263bb3289a28317e2a1a71d459201183e9a10a5.css?body=1" for ::1 at 2016-01-04 14:26:30 +0200
+
+
+Started GET "/assets/sessions.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-01-04 14:26:30 +0200
+
+
+Started GET "/assets/users.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-01-04 14:26:30 +0200
+
+
+Started GET "/assets/jquery.self-a714331225dda820228db323939889f149aec0127aeb06255646b616ba1ca419.js?body=1" for ::1 at 2016-01-04 14:26:30 +0200
+
+
+Started GET "/assets/jquery_ujs.self-d456baa54c1fa6be2ec3711f0a72ddf7a5b2f34a6b4f515f33767d6207b7d4b3.js?body=1" for ::1 at 2016-01-04 14:26:30 +0200
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for ::1 at 2016-01-04 14:26:30 +0200
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for ::1 at 2016-01-04 14:26:30 +0200
+
+
+Started GET "/assets/messages.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-01-04 14:26:30 +0200
+
+
+Started GET "/assets/sessions.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-01-04 14:26:30 +0200
+
+
+Started GET "/assets/users.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-01-04 14:26:30 +0200
+
+
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for ::1 at 2016-01-04 14:26:30 +0200
+
+
+Started POST "/signup" for ::1 at 2016-01-04 14:26:33 +0200
+Processing by UsersController#new as HTML
+  Parameters: {"authenticity_token"=>"9FnIlj+qtxZDdzxq2HmIZxlMwnYqHM4j2KjXWMVPJCX0dQBjNjmcA/3qB8IRAcoAOjsSlzTECHFUbfHK6ixwdg=="}
+  Rendered users/new.html.erb within layouts/application (3.4ms)
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+Completed 200 OK in 30ms (Views: 24.4ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/users" for ::1 at 2016-01-04 14:26:46 +0200
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"9otf2aoNjW3vFNSpte8eoGHP7G3SidUJTc67cdhaTIf2p5cso56meFGJ7wF8l1zHQrg8jMxRE1vBC53j9zkY1A==", "user"=>{"first_name"=>"vlad", "last_name"=>"vlad", "email"=>"vlad@vlad.com", "password"=>"[FILTERED]"}, "commit"=>"Signup"}
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "users" ("first_name", "last_name", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["first_name", "vlad"], ["last_name", "vlad"], ["email", "vlad@vlad.com"], ["password_digest", "$2a$10$aw.Dj.KVnnR0IqGeIcZ4VOBpGZFTibcA4hLbClD5EiYSVpZ7HagfW"], ["created_at", "2016-01-04 12:26:46.692710"], ["updated_at", "2016-01-04 12:26:46.692710"]]
+  [1m[35m (1.0ms)[0m  COMMIT
+Redirected to http://localhost:3000/
+Completed 302 Found in 78ms (ActiveRecord: 1.5ms)
+
+
+Started GET "/" for ::1 at 2016-01-04 14:26:46 +0200
+Processing by SessionsController#new as HTML
+  Rendered sessions/new.html.erb within layouts/application (0.9ms)
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+Completed 200 OK in 30ms (Views: 29.4ms | ActiveRecord: 0.3ms)
+  [1m[36m (117.6ms)[0m  [1mDROP DATABASE IF EXISTS "messaging_app_protected"[0m
+  [1m[35m (0.1ms)[0m  DROP DATABASE IF EXISTS "messaging_app_protected"
+  [1m[36m (243.3ms)[0m  [1mCREATE DATABASE "messaging_app_protected" ENCODING = 'utf8'[0m
+  [1m[35m (0.8ms)[0m  CREATE DATABASE "messaging_app_protected" ENCODING = 'utf8'
+  [1m[36mSQL (0.2ms)[0m  [1mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (3.7ms)[0m  CREATE TABLE "messages" ("id" serial primary key, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "content" text) 
+  [1m[36m (2.5ms)[0m  [1mCREATE TABLE "users" ("id" serial primary key, "first_name" character varying, "last_name" character varying, "email" character varying, "password_digest" character varying, "role" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) [0m
+  [1m[35m (1.7ms)[0m  CREATE TABLE "schema_migrations" ("version" character varying NOT NULL) 
+  [1m[36m (0.8ms)[0m  [1mCREATE UNIQUE INDEX  "unique_schema_migrations" ON "schema_migrations"  ("version")[0m
+  [1m[35m (0.2ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36m (0.3ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20160102220819')[0m
+  [1m[35m (0.2ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20160101223806')
+  [1m[36mSQL (0.2ms)[0m  [1mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (2.0ms)[0m  DROP TABLE "messages" CASCADE
+  [1m[36m (3.0ms)[0m  [1mCREATE TABLE "messages" ("id" serial primary key, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "content" text) [0m
+  [1m[35m (1.0ms)[0m  DROP TABLE "users" CASCADE
+  [1m[36m (2.4ms)[0m  [1mCREATE TABLE "users" ("id" serial primary key, "first_name" character varying, "last_name" character varying, "email" character varying, "password_digest" character varying, "role" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) [0m
+  [1m[35m (0.3ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+
+
+Started GET "/" for ::1 at 2016-01-04 14:30:47 +0200
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by SessionsController#new as HTML
+  Rendered sessions/new.html.erb within layouts/application (5.8ms)
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 1]]
+Completed 200 OK in 202ms (Views: 191.6ms | ActiveRecord: 2.6ms)
+
+
+Started GET "/assets/messages.self-1826f31c17a9f711ab573e251263bb3289a28317e2a1a71d459201183e9a10a5.css?body=1" for ::1 at 2016-01-04 14:30:47 +0200
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for ::1 at 2016-01-04 14:30:47 +0200
+
+
+Started GET "/assets/jquery.self-a714331225dda820228db323939889f149aec0127aeb06255646b616ba1ca419.js?body=1" for ::1 at 2016-01-04 14:30:47 +0200
+
+
+Started GET "/assets/sessions.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-01-04 14:30:47 +0200
+
+
+Started GET "/assets/users.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-01-04 14:30:47 +0200
+
+
+Started GET "/assets/jquery_ujs.self-d456baa54c1fa6be2ec3711f0a72ddf7a5b2f34a6b4f515f33767d6207b7d4b3.js?body=1" for ::1 at 2016-01-04 14:30:47 +0200
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for ::1 at 2016-01-04 14:30:47 +0200
+
+
+Started GET "/assets/messages.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-01-04 14:30:47 +0200
+
+
+Started GET "/assets/sessions.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-01-04 14:30:47 +0200
+
+
+Started GET "/assets/users.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-01-04 14:30:47 +0200
+
+
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for ::1 at 2016-01-04 14:30:47 +0200
+
+
+Started POST "/signup" for ::1 at 2016-01-04 14:30:48 +0200
+Processing by UsersController#new as HTML
+  Parameters: {"authenticity_token"=>"WCk45Yh34WX1FE2RIDb8EpuBj51Ot2D3YDD8I0Xd9FFYBfAQgeTKcEuJdjnpTr51uPZffFBvpqXs9dqxar6gAg=="}
+  Rendered users/new.html.erb within layouts/application (3.7ms)
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+Completed 200 OK in 33ms (Views: 26.5ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/users" for ::1 at 2016-01-04 14:30:57 +0200
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"duGSDuKK+2/DxiMAyj1z0Dd2D9KaTTkkNMVAVeOuRRh2zVr76xnQen1bGKgDRTG3FAHfM4SV/3a4AGbHzM0RSw==", "user"=>{"first_name"=>"vlad", "last_name"=>"vlad", "email"=>"vlad@vlad.com", "password"=>"[FILTERED]"}, "commit"=>"Signup"}
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "users" ("first_name", "last_name", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["first_name", "vlad"], ["last_name", "vlad"], ["email", "vlad@vlad.com"], ["password_digest", "$2a$10$4M0soTeB99Gzw07i/vPTN..tVCmT.qdduPsnp8H.neXE6soRqxIoG"], ["created_at", "2016-01-04 12:30:57.889674"], ["updated_at", "2016-01-04 12:30:57.889674"]]
+  [1m[35m (1.0ms)[0m  COMMIT
+Redirected to http://localhost:3000/
+Completed 302 Found in 75ms (ActiveRecord: 1.5ms)
+
+
+Started GET "/" for ::1 at 2016-01-04 14:30:57 +0200
+Processing by SessionsController#new as HTML
+  Rendered sessions/new.html.erb within layouts/application (0.9ms)
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+Completed 200 OK in 33ms (Views: 32.3ms | ActiveRecord: 0.3ms)
+  [1m[36m (117.0ms)[0m  [1mDROP DATABASE IF EXISTS "messaging_app_protected"[0m
+  [1m[35m (0.1ms)[0m  DROP DATABASE IF EXISTS "messaging_app_protected"
+  [1m[36m (237.8ms)[0m  [1mCREATE DATABASE "messaging_app_protected" ENCODING = 'utf8'[0m
+  [1m[35m (0.9ms)[0m  CREATE DATABASE "messaging_app_protected" ENCODING = 'utf8'
+  [1m[36mSQL (0.2ms)[0m  [1mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (4.6ms)[0m  CREATE TABLE "messages" ("id" serial primary key, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "content" text) 
+  [1m[36m (3.5ms)[0m  [1mCREATE TABLE "users" ("id" serial primary key, "first_name" character varying, "last_name" character varying, "email" character varying, "password_digest" character varying, "role" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) [0m
+  [1m[35m (1.7ms)[0m  CREATE TABLE "schema_migrations" ("version" character varying NOT NULL) 
+  [1m[36m (1.6ms)[0m  [1mCREATE UNIQUE INDEX  "unique_schema_migrations" ON "schema_migrations"  ("version")[0m
+  [1m[35m (0.7ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36m (0.8ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20160102220819')[0m
+  [1m[35m (0.6ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20160101223806')
+  [1m[36mSQL (0.2ms)[0m  [1mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (1.9ms)[0m  DROP TABLE "messages" CASCADE
+  [1m[36m (3.3ms)[0m  [1mCREATE TABLE "messages" ("id" serial primary key, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "content" text) [0m
+  [1m[35m (1.0ms)[0m  DROP TABLE "users" CASCADE
+  [1m[36m (2.7ms)[0m  [1mCREATE TABLE "users" ("id" serial primary key, "first_name" character varying, "last_name" character varying, "email" character varying, "password_digest" character varying, "role" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) [0m
+  [1m[35m (0.2ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+
+
+Started GET "/" for ::1 at 2016-01-04 14:33:12 +0200
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by SessionsController#new as HTML
+  Rendered sessions/new.html.erb within layouts/application (6.0ms)
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 1]]
+Completed 200 OK in 222ms (Views: 210.0ms | ActiveRecord: 2.8ms)
+
+
+Started GET "/assets/messages.self-1826f31c17a9f711ab573e251263bb3289a28317e2a1a71d459201183e9a10a5.css?body=1" for ::1 at 2016-01-04 14:33:13 +0200
+
+
+Started GET "/assets/sessions.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-01-04 14:33:13 +0200
+
+
+Started GET "/assets/users.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-01-04 14:33:13 +0200
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for ::1 at 2016-01-04 14:33:13 +0200
+
+
+Started GET "/assets/jquery.self-a714331225dda820228db323939889f149aec0127aeb06255646b616ba1ca419.js?body=1" for ::1 at 2016-01-04 14:33:13 +0200
+
+
+Started GET "/assets/jquery_ujs.self-d456baa54c1fa6be2ec3711f0a72ddf7a5b2f34a6b4f515f33767d6207b7d4b3.js?body=1" for ::1 at 2016-01-04 14:33:13 +0200
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for ::1 at 2016-01-04 14:33:13 +0200
+
+
+Started GET "/assets/messages.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-01-04 14:33:13 +0200
+
+
+Started GET "/assets/sessions.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-01-04 14:33:13 +0200
+
+
+Started GET "/assets/users.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-01-04 14:33:13 +0200
+
+
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for ::1 at 2016-01-04 14:33:13 +0200
+
+
+Started POST "/signup" for ::1 at 2016-01-04 14:33:17 +0200
+Processing by UsersController#new as HTML
+  Parameters: {"authenticity_token"=>"vGfUqzhO6G8nN+SI7JLjyC3jsplqd5xR9SVgDI5L2YG8SxxeMd3Depmq3yAl6qGvDpRieHSvWgN54EaeoSiN0g=="}
+  Rendered users/new.html.erb within layouts/application (4.8ms)
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+Completed 200 OK in 49ms (Views: 35.9ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/users" for ::1 at 2016-01-04 14:33:26 +0200
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"7uaxWfwKP2T42YYdbLqsf69AdCjusp20qWqo0B/AbOXuynms9ZkUcUZEvbWlwu4YjDekyfBqW+Ylr45CMKM4tg==", "user"=>{"first_name"=>"vlad", "last_name"=>"vlad", "email"=>"vlad@vlad.com", "password"=>"[FILTERED]"}, "commit"=>"Signup"}
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "users" ("first_name", "last_name", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["first_name", "vlad"], ["last_name", "vlad"], ["email", "vlad@vlad.com"], ["password_digest", "$2a$10$6o66xN8nskelsZQ/KUjML.rZN8RNGYM7fO0yv6Fai/J337Fr.jUXm"], ["created_at", "2016-01-04 12:33:26.556533"], ["updated_at", "2016-01-04 12:33:26.556533"]]
+  [1m[35m (0.8ms)[0m  COMMIT
+Redirected to http://localhost:3000/
+Completed 302 Found in 70ms (ActiveRecord: 1.3ms)
+
+
+Started GET "/" for ::1 at 2016-01-04 14:33:26 +0200
+Processing by SessionsController#new as HTML
+  Rendered sessions/new.html.erb within layouts/application (0.9ms)
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+Completed 200 OK in 31ms (Views: 29.6ms | ActiveRecord: 0.3ms)
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT 1[0m  [["email", "vlad@vlad.com"]]
+  [1m[36m (5036.1ms)[0m  [1mDROP DATABASE IF EXISTS "messaging_app_protected"[0m
+  [1m[35m (5030.2ms)[0m  DROP DATABASE IF EXISTS "messaging_app_protected"
+  [1m[36m (0.8ms)[0m  [1mCREATE DATABASE "messaging_app_protected" ENCODING = 'utf8'[0m
+  [1m[35m (0.9ms)[0m  CREATE DATABASE "messaging_app_protected" ENCODING = 'utf8'
+  [1m[36mSQL (0.2ms)[0m  [1mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (3.2ms)[0m  DROP TABLE "messages" CASCADE
+  [1m[36m (3.9ms)[0m  [1mCREATE TABLE "messages" ("id" serial primary key, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "content" text) [0m
+  [1m[35m (1.2ms)[0m  DROP TABLE "users" CASCADE
+  [1m[36m (2.3ms)[0m  [1mCREATE TABLE "users" ("id" serial primary key, "first_name" character varying, "last_name" character varying, "email" character varying, "password_digest" character varying, "role" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) [0m
+  [1m[35m (0.2ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36mSQL (0.2ms)[0m  [1mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (1.9ms)[0m  DROP TABLE "messages" CASCADE
+  [1m[36m (3.4ms)[0m  [1mCREATE TABLE "messages" ("id" serial primary key, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "content" text) [0m
+  [1m[35m (1.1ms)[0m  DROP TABLE "users" CASCADE
+  [1m[36m (2.8ms)[0m  [1mCREATE TABLE "users" ("id" serial primary key, "first_name" character varying, "last_name" character varying, "email" character varying, "password_digest" character varying, "role" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) [0m
+  [1m[35m (0.3ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36m (117.1ms)[0m  [1mDROP DATABASE IF EXISTS "messaging_app_protected"[0m
+  [1m[35m (0.1ms)[0m  DROP DATABASE IF EXISTS "messaging_app_protected"
+  [1m[36m (242.4ms)[0m  [1mCREATE DATABASE "messaging_app_protected" ENCODING = 'utf8'[0m
+  [1m[35m (0.5ms)[0m  CREATE DATABASE "messaging_app_protected" ENCODING = 'utf8'
+  [1m[36mSQL (0.2ms)[0m  [1mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (3.8ms)[0m  CREATE TABLE "messages" ("id" serial primary key, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "content" text) 
+  [1m[36m (2.5ms)[0m  [1mCREATE TABLE "users" ("id" serial primary key, "first_name" character varying, "last_name" character varying, "email" character varying, "password_digest" character varying, "role" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) [0m
+  [1m[35m (1.7ms)[0m  CREATE TABLE "schema_migrations" ("version" character varying NOT NULL) 
+  [1m[36m (1.2ms)[0m  [1mCREATE UNIQUE INDEX  "unique_schema_migrations" ON "schema_migrations"  ("version")[0m
+  [1m[35m (0.5ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36m (0.5ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20160102220819')[0m
+  [1m[35m (0.4ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20160101223806')
+  [1m[36mSQL (0.2ms)[0m  [1mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (1.8ms)[0m  DROP TABLE "messages" CASCADE
+  [1m[36m (2.8ms)[0m  [1mCREATE TABLE "messages" ("id" serial primary key, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "content" text) [0m
+  [1m[35m (1.1ms)[0m  DROP TABLE "users" CASCADE
+  [1m[36m (2.5ms)[0m  [1mCREATE TABLE "users" ("id" serial primary key, "first_name" character varying, "last_name" character varying, "email" character varying, "password_digest" character varying, "role" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) [0m
+  [1m[35m (0.3ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+
+
+Started GET "/" for ::1 at 2016-01-04 14:59:27 +0200
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by SessionsController#new as HTML
+  Rendered sessions/new.html.erb within layouts/application (5.8ms)
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 1]]
+Completed 200 OK in 219ms (Views: 208.5ms | ActiveRecord: 2.6ms)
+
+
+Started GET "/assets/messages.self-1826f31c17a9f711ab573e251263bb3289a28317e2a1a71d459201183e9a10a5.css?body=1" for ::1 at 2016-01-04 14:59:28 +0200
+
+
+Started GET "/assets/jquery.self-a714331225dda820228db323939889f149aec0127aeb06255646b616ba1ca419.js?body=1" for ::1 at 2016-01-04 14:59:28 +0200
+
+
+Started GET "/assets/users.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-01-04 14:59:28 +0200
+
+
+Started GET "/assets/jquery_ujs.self-d456baa54c1fa6be2ec3711f0a72ddf7a5b2f34a6b4f515f33767d6207b7d4b3.js?body=1" for ::1 at 2016-01-04 14:59:28 +0200
+
+
+Started GET "/assets/sessions.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-01-04 14:59:28 +0200
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for ::1 at 2016-01-04 14:59:28 +0200
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for ::1 at 2016-01-04 14:59:28 +0200
+
+
+Started GET "/assets/messages.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-01-04 14:59:28 +0200
+
+
+Started GET "/assets/sessions.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-01-04 14:59:28 +0200
+
+
+Started GET "/assets/users.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-01-04 14:59:28 +0200
+
+
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for ::1 at 2016-01-04 14:59:28 +0200
+
+
+Started POST "/signup" for ::1 at 2016-01-04 14:59:29 +0200
+Processing by UsersController#new as HTML
+  Parameters: {"authenticity_token"=>"qz7h8/XMF+LLv5WM3F6kix+KYc3DDUX3NUFk86t7z7SrEikG/F8893UiriQVJubsPP2xLN3Vg6W5hEJhhBib5w=="}
+  Rendered users/new.html.erb within layouts/application (5.2ms)
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+Completed 200 OK in 52ms (Views: 45.7ms | ActiveRecord: 0.2ms)
+
+
+Started POST "/users" for ::1 at 2016-01-04 14:59:39 +0200
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"d8Di1PO1tW3D8lrZqU2R2JEHFywZ72AjXl9A9Bvvd6l37Coh+iaeeH1vYXFgNdO/snDHzQc3pnHSmmZmNIwj+g==", "user"=>{"first_name"=>"vlad", "last_name"=>"vlad", "email"=>"vlad@vlad.com", "password"=>"[FILTERED]"}, "commit"=>"Signup"}
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "users" ("first_name", "last_name", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["first_name", "vlad"], ["last_name", "vlad"], ["email", "vlad@vlad.com"], ["password_digest", "$2a$10$zyzgiOQpu59NDnvDSbh0VO7Ja0EwdM0vAL0VWYAUJOzyOkywdtJ9G"], ["created_at", "2016-01-04 12:59:39.941183"], ["updated_at", "2016-01-04 12:59:39.941183"]]
+  [1m[35m (0.8ms)[0m  COMMIT
+Redirected to http://localhost:3000/
+Completed 302 Found in 79ms (ActiveRecord: 1.4ms)
+
+
+Started GET "/" for ::1 at 2016-01-04 14:59:39 +0200
+Processing by SessionsController#new as HTML
+  Rendered sessions/new.html.erb within layouts/application (1.3ms)
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+Completed 200 OK in 35ms (Views: 33.2ms | ActiveRecord: 0.3ms)
+  [1m[36m (116.6ms)[0m  [1mDROP DATABASE IF EXISTS "messaging_app_protected"[0m
+  [1m[35m (0.1ms)[0m  DROP DATABASE IF EXISTS "messaging_app_protected"
+  [1m[36m (236.6ms)[0m  [1mCREATE DATABASE "messaging_app_protected" ENCODING = 'utf8'[0m
+  [1m[35m (0.6ms)[0m  CREATE DATABASE "messaging_app_protected" ENCODING = 'utf8'
+  [1m[36mSQL (0.3ms)[0m  [1mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (5.9ms)[0m  CREATE TABLE "messages" ("id" serial primary key, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "content" text) 
+  [1m[36m (7.8ms)[0m  [1mCREATE TABLE "users" ("id" serial primary key, "first_name" character varying, "last_name" character varying, "email" character varying, "password_digest" character varying, "role" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) [0m
+  [1m[35m (1.4ms)[0m  CREATE TABLE "schema_migrations" ("version" character varying NOT NULL) 
+  [1m[36m (1.1ms)[0m  [1mCREATE UNIQUE INDEX  "unique_schema_migrations" ON "schema_migrations"  ("version")[0m
+  [1m[35m (0.3ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36m (0.3ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20160102220819')[0m
+  [1m[35m (0.3ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20160101223806')
+  [1m[36mSQL (0.2ms)[0m  [1mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (1.8ms)[0m  DROP TABLE "messages" CASCADE
+  [1m[36m (3.5ms)[0m  [1mCREATE TABLE "messages" ("id" serial primary key, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "content" text) [0m
+  [1m[35m (1.5ms)[0m  DROP TABLE "users" CASCADE
+  [1m[36m (3.4ms)[0m  [1mCREATE TABLE "users" ("id" serial primary key, "first_name" character varying, "last_name" character varying, "email" character varying, "password_digest" character varying, "role" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) [0m
+  [1m[35m (0.3ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+
+
+Started GET "/" for ::1 at 2016-01-04 15:20:05 +0200
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by SessionsController#new as HTML
+  Rendered sessions/new.html.erb within layouts/application (7.3ms)
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 1]]
+Completed 200 OK in 196ms (Views: 186.1ms | ActiveRecord: 2.6ms)
+
+
+Started GET "/assets/messages.self-1826f31c17a9f711ab573e251263bb3289a28317e2a1a71d459201183e9a10a5.css?body=1" for ::1 at 2016-01-04 15:20:06 +0200
+
+
+Started GET "/assets/users.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-01-04 15:20:06 +0200
+
+
+Started GET "/assets/sessions.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-01-04 15:20:06 +0200
+
+
+Started GET "/assets/jquery.self-a714331225dda820228db323939889f149aec0127aeb06255646b616ba1ca419.js?body=1" for ::1 at 2016-01-04 15:20:06 +0200
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for ::1 at 2016-01-04 15:20:06 +0200
+
+
+Started GET "/assets/jquery_ujs.self-d456baa54c1fa6be2ec3711f0a72ddf7a5b2f34a6b4f515f33767d6207b7d4b3.js?body=1" for ::1 at 2016-01-04 15:20:06 +0200
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for ::1 at 2016-01-04 15:20:06 +0200
+
+
+Started GET "/assets/messages.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-01-04 15:20:06 +0200
+
+
+Started GET "/assets/sessions.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-01-04 15:20:06 +0200
+
+
+Started GET "/assets/users.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-01-04 15:20:06 +0200
+
+
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for ::1 at 2016-01-04 15:20:06 +0200
+
+
+Started POST "/signup" for ::1 at 2016-01-04 15:20:14 +0200
+Processing by UsersController#new as HTML
+  Parameters: {"authenticity_token"=>"6jab19JBcS+Mq+8rtjp7L2N7h7CQfFTdn2cTZAnxqp3qGlMi29JaOjI21IN/QjlIQAxXUY6kko8TojX2JpL+zg=="}
+  Rendered users/new.html.erb within layouts/application (4.4ms)
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+Completed 200 OK in 45ms (Views: 40.0ms | ActiveRecord: 0.2ms)
+
+
+Started POST "/users" for ::1 at 2016-01-04 15:20:24 +0200
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"TFT4cZBzg5Q+b46cDe9hmviP80vC5YIb9RGUIKE2LEtMeDCEmeCogYDytTTElyP92/gjqtw9REl51LKyjlV4GA==", "user"=>{"first_name"=>"vlad", "last_name"=>"vlad", "email"=>"vlad@vlad.com", "password"=>"[FILTERED]"}, "commit"=>"Signup"}
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "users" ("first_name", "last_name", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["first_name", "vlad"], ["last_name", "vlad"], ["email", "vlad@vlad.com"], ["password_digest", "$2a$10$3V.5L9JYmxRabQtIx3r0c.TCMExb4WryMUOwBwLAEoXU2wSsBcmMS"], ["created_at", "2016-01-04 13:20:24.445110"], ["updated_at", "2016-01-04 13:20:24.445110"]]
+  [1m[35m (1.0ms)[0m  COMMIT
+Redirected to http://localhost:3000/
+Completed 302 Found in 84ms (ActiveRecord: 1.6ms)
+
+
+Started GET "/" for ::1 at 2016-01-04 15:20:24 +0200
+Processing by SessionsController#new as HTML
+  Rendered sessions/new.html.erb within layouts/application (0.8ms)
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+Completed 200 OK in 27ms (Views: 26.1ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/login" for ::1 at 2016-01-04 15:21:02 +0200
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"EwUp18QY3SJ6GBYEL4xUJKgM0lmXTNieiDGDzrAMZz0TKeEizYv2N8SFLazm9BZDi3sCuImUHswE9KVcn28zbg==", "session"=>{"email"=>"vlad@vlad.com", "password"=>"[FILTERED]"}, "commit"=>"Log in"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT 1  [["email", "vlad@vlad.com"]]
+Redirected to http://localhost:3000/messages
+Completed 302 Found in 67ms (ActiveRecord: 0.2ms)
+
+
+Started GET "/messages" for ::1 at 2016-01-04 15:21:02 +0200
+Processing by MessagesController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mMessage Load (0.3ms)[0m  SELECT "messages".* FROM "messages"
+  Rendered messages/index.html.erb within layouts/application (10.2ms)
+Completed 200 OK in 43ms (Views: 35.5ms | ActiveRecord: 1.6ms)
+
+
+Started DELETE "/logout" for ::1 at 2016-01-04 15:21:05 +0200
+Processing by SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"YgfArW/xv6MK4Iu+pA95GZ4EhMuCiBiUe1Q5ZhRIXwViKwhYZmKUtrR9sBZtdzt+vXNUKpxQ3sb3kR/0OysLVg=="}
+Redirected to http://localhost:3000/
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2016-01-04 15:21:05 +0200
+Processing by SessionsController#new as HTML
+  Rendered sessions/new.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 16ms (Views: 15.7ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/signup" for ::1 at 2016-01-04 15:22:21 +0200
+Processing by UsersController#new as HTML
+  Parameters: {"authenticity_token"=>"812Q0eknSeMb52injJDrbktFcTjnClBObHycMo/6EgHzcVgk4LRi9qV6Uw9F6KkJaDKh2fnSlhzgubqgoJlGUg=="}
+  Rendered users/new.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 24ms (Views: 17.5ms | ActiveRecord: 1.2ms)
+
+
+Started POST "/users" for ::1 at 2016-01-04 15:22:28 +0200
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"f5gaHDNwmtdgdCe48b0dkpgFYgo+4T4y1VEJPiw2WPF/tNLpOuOxwt7pHBA4xV/1u3Ky6yA5+GBZlC+sA1UMog==", "user"=>{"first_name"=>"a", "last_name"=>"a", "email"=>"a@a.com", "password"=>"[FILTERED]"}, "commit"=>"Signup"}
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "users" ("first_name", "last_name", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["first_name", "a"], ["last_name", "a"], ["email", "a@a.com"], ["password_digest", "$2a$10$7xDCged1UcOl9QA/aGj/SuRdTIplwxLDfOIAKHw2S/fMWJ4w62BFC"], ["created_at", "2016-01-04 13:22:28.744365"], ["updated_at", "2016-01-04 13:22:28.744365"]]
+  [1m[36m (1.0ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 71ms (ActiveRecord: 1.4ms)
+
+
+Started GET "/" for ::1 at 2016-01-04 15:22:28 +0200
+Processing by SessionsController#new as HTML
+  Rendered sessions/new.html.erb within layouts/application (0.6ms)
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 2]]
+Completed 200 OK in 17ms (Views: 16.5ms | ActiveRecord: 0.2ms)
+
+
+Started POST "/signup" for ::1 at 2016-01-04 15:23:41 +0200
+Processing by UsersController#new as HTML
+  Parameters: {"authenticity_token"=>"DM6tI513iLMKyGF/SueB3WCPC9rvJi+dvc8SPLH12fQM4mXWlOSjprRVWteDn8O6Q/jbO/H+6c8xCjSunpaNpw=="}
+  Rendered users/new.html.erb within layouts/application (1.0ms)
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 2]]
+Completed 200 OK in 24ms (Views: 17.4ms | ActiveRecord: 1.6ms)
+
+
+Started POST "/users" for ::1 at 2016-01-04 15:23:48 +0200
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"/A5N1zyHjQZqrSM1YK5d8e0qYmCkJPx3gS0E31p7lwb8IoUiNRSmE9QwGJ2p1h+Wzl2ygbr8OiUN6CJNdRjDVQ==", "user"=>{"first_name"=>"b", "last_name"=>"b", "email"=>"b@b.com", "password"=>"[FILTERED]"}, "commit"=>"Signup"}
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "users" ("first_name", "last_name", "email", "password_digest", "role", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["first_name", "b"], ["last_name", "b"], ["email", "b@b.com"], ["password_digest", "$2a$10$TK7/pBXt1bJ2yxboVEJdJuBuQRUN0rfP9z2n1pc7jqRoo7GfwyaXm"], ["role", "kurwa"], ["created_at", "2016-01-04 13:23:48.883857"], ["updated_at", "2016-01-04 13:23:48.883857"]]
+  [1m[35m (0.7ms)[0m  COMMIT
+Redirected to http://localhost:3000/
+Completed 302 Found in 76ms (ActiveRecord: 1.1ms)
+
+
+Started GET "/" for ::1 at 2016-01-04 15:23:48 +0200
+Processing by SessionsController#new as HTML
+  Rendered sessions/new.html.erb within layouts/application (0.8ms)
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 3]]
+Completed 200 OK in 20ms (Views: 18.4ms | ActiveRecord: 0.4ms)
+  [1m[36m (117.8ms)[0m  [1mDROP DATABASE IF EXISTS "messaging_app_protected"[0m
+  [1m[35m (0.1ms)[0m  DROP DATABASE IF EXISTS "messaging_app_protected"
+  [1m[36m (237.2ms)[0m  [1mCREATE DATABASE "messaging_app_protected" ENCODING = 'utf8'[0m
+  [1m[35m (0.5ms)[0m  CREATE DATABASE "messaging_app_protected" ENCODING = 'utf8'
+  [1m[36mSQL (0.2ms)[0m  [1mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (3.8ms)[0m  CREATE TABLE "messages" ("id" serial primary key, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "content" text) 
+  [1m[36m (2.8ms)[0m  [1mCREATE TABLE "users" ("id" serial primary key, "first_name" character varying, "last_name" character varying, "email" character varying, "password_digest" character varying, "role" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) [0m
+  [1m[35m (1.5ms)[0m  CREATE TABLE "schema_migrations" ("version" character varying NOT NULL) 
+  [1m[36m (0.9ms)[0m  [1mCREATE UNIQUE INDEX  "unique_schema_migrations" ON "schema_migrations"  ("version")[0m
+  [1m[35m (0.3ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36m (0.5ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20160102220819')[0m
+  [1m[35m (1.0ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20160101223806')
+  [1m[36mSQL (0.2ms)[0m  [1mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (2.6ms)[0m  DROP TABLE "messages" CASCADE
+  [1m[36m (11.6ms)[0m  [1mCREATE TABLE "messages" ("id" serial primary key, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "content" text) [0m
+  [1m[35m (1.3ms)[0m  DROP TABLE "users" CASCADE
+  [1m[36m (2.5ms)[0m  [1mCREATE TABLE "users" ("id" serial primary key, "first_name" character varying, "last_name" character varying, "email" character varying, "password_digest" character varying, "role" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) [0m
+  [1m[35m (0.3ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+
+
+Started GET "/" for ::1 at 2016-01-04 15:24:42 +0200
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by SessionsController#new as HTML
+  Rendered sessions/new.html.erb within layouts/application (7.2ms)
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 3]]
+Completed 200 OK in 208ms (Views: 198.1ms | ActiveRecord: 2.5ms)
+
+
+Started GET "/assets/messages.self-1826f31c17a9f711ab573e251263bb3289a28317e2a1a71d459201183e9a10a5.css?body=1" for ::1 at 2016-01-04 15:24:42 +0200
+
+
+Started GET "/assets/sessions.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-01-04 15:24:42 +0200
+
+
+Started GET "/assets/users.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-01-04 15:24:42 +0200
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for ::1 at 2016-01-04 15:24:42 +0200
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for ::1 at 2016-01-04 15:24:42 +0200
+
+
+Started GET "/assets/jquery.self-a714331225dda820228db323939889f149aec0127aeb06255646b616ba1ca419.js?body=1" for ::1 at 2016-01-04 15:24:42 +0200
+
+
+Started GET "/assets/jquery_ujs.self-d456baa54c1fa6be2ec3711f0a72ddf7a5b2f34a6b4f515f33767d6207b7d4b3.js?body=1" for ::1 at 2016-01-04 15:24:42 +0200
+
+
+Started GET "/assets/messages.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-01-04 15:24:42 +0200
+
+
+Started GET "/assets/sessions.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-01-04 15:24:42 +0200
+
+
+Started GET "/assets/users.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-01-04 15:24:42 +0200
+
+
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for ::1 at 2016-01-04 15:24:42 +0200
+
+
+Started POST "/signup" for ::1 at 2016-01-04 15:24:44 +0200
+Processing by UsersController#new as HTML
+  Parameters: {"authenticity_token"=>"NIYt88flZU3abfgVwkp6I6OqTJWUSe+8lPzTahOB82Y0quUGznZOWGTww70LMjhEgN2cdIqRKe4YOfX4POKnNQ=="}
+  Rendered users/new.html.erb within layouts/application (3.9ms)
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 3]]
+Completed 200 OK in 44ms (Views: 37.9ms | ActiveRecord: 0.2ms)
+
+
+Started POST "/users" for ::1 at 2016-01-04 15:26:00 +0200
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"sJxAlG1oxRJ8gV6xye9e+hZ+PjSazzWL7RQ55oPPys6wsIhhZPvuB8IcZRkAlxydNQnu1YQX89lh0R90rKyenQ==", "user"=>{"first_name"=>"vlad", "last_name"=>"vlad", "email"=>"vlad@vlad.com", "password"=>"[FILTERED]"}, "commit"=>"Signup"}
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "users" ("first_name", "last_name", "email", "password_digest", "role", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["first_name", "vlad"], ["last_name", "vlad"], ["email", "vlad@vlad.com"], ["password_digest", "$2a$10$.aU6b.TJWH2f2SiVzDy1MuZjEQ9t/Rr8OSWKWjEp2nIybdofDpKmi"], ["role", "kurwa"], ["created_at", "2016-01-04 13:26:00.319437"], ["updated_at", "2016-01-04 13:26:00.319437"]]
+  [1m[35m (1.0ms)[0m  COMMIT
+Redirected to http://localhost:3000/
+Completed 302 Found in 75ms (ActiveRecord: 1.6ms)
+
+
+Started GET "/" for ::1 at 2016-01-04 15:26:00 +0200
+Processing by SessionsController#new as HTML
+  Rendered sessions/new.html.erb within layouts/application (0.8ms)
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+Completed 200 OK in 26ms (Views: 25.4ms | ActiveRecord: 0.3ms)
+  [1m[36m (116.3ms)[0m  [1mDROP DATABASE IF EXISTS "messaging_app_protected"[0m
+  [1m[35m (0.1ms)[0m  DROP DATABASE IF EXISTS "messaging_app_protected"
+  [1m[36m (235.2ms)[0m  [1mCREATE DATABASE "messaging_app_protected" ENCODING = 'utf8'[0m
+  [1m[35m (0.5ms)[0m  CREATE DATABASE "messaging_app_protected" ENCODING = 'utf8'
+  [1m[36mSQL (0.2ms)[0m  [1mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (3.5ms)[0m  CREATE TABLE "messages" ("id" serial primary key, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "content" text) 
+  [1m[36m (2.2ms)[0m  [1mCREATE TABLE "users" ("id" serial primary key, "first_name" character varying, "last_name" character varying, "email" character varying, "password_digest" character varying, "role" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) [0m
+  [1m[35m (2.1ms)[0m  CREATE TABLE "schema_migrations" ("version" character varying NOT NULL) 
+  [1m[36m (0.9ms)[0m  [1mCREATE UNIQUE INDEX  "unique_schema_migrations" ON "schema_migrations"  ("version")[0m
+  [1m[35m (0.2ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36m (0.3ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20160102220819')[0m
+  [1m[35m (0.2ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20160101223806')
+  [1m[36mSQL (0.3ms)[0m  [1mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (1.8ms)[0m  DROP TABLE "messages" CASCADE
+  [1m[36m (3.1ms)[0m  [1mCREATE TABLE "messages" ("id" serial primary key, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "content" text) [0m
+  [1m[35m (1.2ms)[0m  DROP TABLE "users" CASCADE
+  [1m[36m (3.1ms)[0m  [1mCREATE TABLE "users" ("id" serial primary key, "first_name" character varying, "last_name" character varying, "email" character varying, "password_digest" character varying, "role" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) [0m
+  [1m[35m (0.3ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+
+
+Started POST "/signup" for ::1 at 2016-01-04 15:29:57 +0200
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by UsersController#new as HTML
+  Parameters: {"authenticity_token"=>"t8oe/b2qC8+kHLrK0b7ulujST38PplHuOSJ+q8gCXSS35tYItDkg2hqBgWIYxqzxy6WfnhF+l7y151g552EJdw=="}
+  Rendered users/new.html.erb within layouts/application (8.0ms)
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 1]]
+Completed 200 OK in 218ms (Views: 198.5ms | ActiveRecord: 2.8ms)
+
+
+Started POST "/users" for ::1 at 2016-01-04 15:30:08 +0200
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"CwD1aUSLMVuSpAP/jK9FZoIpNBNsPVNJ1Bq2j8Sc5zgLLD2cTRgaTiw5OFdF1wcBoV7k8nLllRtY35Ad6/+zaw==", "user"=>{"first_name"=>"vlad", "last_name"=>"vlad", "email"=>"vlad@vlad.com", "password"=>"[FILTERED]"}, "commit"=>"Signup"}
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "users"[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO "users" ("first_name", "last_name", "email", "password_digest", "role", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["first_name", "vlad"], ["last_name", "vlad"], ["email", "vlad@vlad.com"], ["password_digest", "$2a$10$SwwUURrkC9GXNHyQLfbNLekfTAFUzc1cUGQE1R.v4Hf2Ut7dPNDLG"], ["role", "kurwa"], ["created_at", "2016-01-04 13:30:08.983484"], ["updated_at", "2016-01-04 13:30:08.983484"]]
+  [1m[35m (0.7ms)[0m  COMMIT
+Redirected to http://localhost:3000/
+Completed 302 Found in 75ms (ActiveRecord: 1.7ms)
+
+
+Started GET "/" for ::1 at 2016-01-04 15:30:08 +0200
+Processing by SessionsController#new as HTML
+  Rendered sessions/new.html.erb within layouts/application (1.4ms)
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+Completed 200 OK in 21ms (Views: 20.6ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/signup" for ::1 at 2016-01-04 15:30:44 +0200
+Processing by UsersController#new as HTML
+  Parameters: {"authenticity_token"=>"TezjIvxzq0CRGakyA26aoDDX0P2sFs9uv+P/4Aw22XNNwCvX9eCAVS+EkprKFtjHE6AAHLLOCTwzJtlyI1WNIA=="}
+  Rendered users/new.html.erb within layouts/application (1.6ms)
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 1]]
+Completed 200 OK in 43ms (Views: 32.4ms | ActiveRecord: 1.6ms)
+
+
+Started POST "/users" for ::1 at 2016-01-04 15:30:51 +0200
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"1o6XfuyvTDSjH5TfOAZhok97WILLslc/FIM0qQMI0PHWol+L5TxnIR2Cr3fxfiPFbAyIY9VqkW2YRhI7LGuEog==", "user"=>{"first_name"=>"a", "last_name"=>"a", "email"=>"a@a.com", "password"=>"[FILTERED]"}, "commit"=>"Signup"}
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "users"[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "users" ("first_name", "last_name", "email", "password_digest", "role", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["first_name", "a"], ["last_name", "a"], ["email", "a@a.com"], ["password_digest", "$2a$10$QIzUgL3uN9gyd.bz1OqjEe9DJQXjtle1t4RVW/AXZ7FTw2xW7vILm"], ["role", "admin"], ["created_at", "2016-01-04 13:30:51.201740"], ["updated_at", "2016-01-04 13:30:51.201740"]]
+  [1m[35m (0.3ms)[0m  COMMIT
+Redirected to http://localhost:3000/
+Completed 302 Found in 68ms (ActiveRecord: 0.9ms)
+
+
+Started GET "/" for ::1 at 2016-01-04 15:30:51 +0200
+Processing by SessionsController#new as HTML
+  Rendered sessions/new.html.erb within layouts/application (1.3ms)
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 2]]
+Completed 200 OK in 36ms (Views: 34.8ms | ActiveRecord: 0.3ms)
+  [1m[36m (116.5ms)[0m  [1mDROP DATABASE IF EXISTS "messaging_app_protected"[0m
+  [1m[35m (0.1ms)[0m  DROP DATABASE IF EXISTS "messaging_app_protected"
+  [1m[36m (236.3ms)[0m  [1mCREATE DATABASE "messaging_app_protected" ENCODING = 'utf8'[0m
+  [1m[35m (0.7ms)[0m  CREATE DATABASE "messaging_app_protected" ENCODING = 'utf8'
+  [1m[36mSQL (0.3ms)[0m  [1mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (4.4ms)[0m  CREATE TABLE "messages" ("id" serial primary key, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "content" text) 
+  [1m[36m (3.1ms)[0m  [1mCREATE TABLE "users" ("id" serial primary key, "first_name" character varying, "last_name" character varying, "email" character varying, "password_digest" character varying, "role" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) [0m
+  [1m[35m (1.4ms)[0m  CREATE TABLE "schema_migrations" ("version" character varying NOT NULL) 
+  [1m[36m (0.9ms)[0m  [1mCREATE UNIQUE INDEX  "unique_schema_migrations" ON "schema_migrations"  ("version")[0m
+  [1m[35m (0.2ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36m (0.4ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20160102220819')[0m
+  [1m[35m (0.3ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20160101223806')
+  [1m[36mSQL (0.6ms)[0m  [1mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (1.8ms)[0m  DROP TABLE "messages" CASCADE
+  [1m[36m (3.1ms)[0m  [1mCREATE TABLE "messages" ("id" serial primary key, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "content" text) [0m
+  [1m[35m (1.0ms)[0m  DROP TABLE "users" CASCADE
+  [1m[36m (2.4ms)[0m  [1mCREATE TABLE "users" ("id" serial primary key, "first_name" character varying, "last_name" character varying, "email" character varying, "password_digest" character varying, "role" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) [0m
+  [1m[35m (0.3ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+
+
+Started GET "/" for ::1 at 2016-01-04 15:31:51 +0200
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by SessionsController#new as HTML
+  Rendered sessions/new.html.erb within layouts/application (5.9ms)
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 2]]
+Completed 200 OK in 178ms (Views: 167.9ms | ActiveRecord: 3.0ms)
+
+
+Started GET "/assets/messages.self-1826f31c17a9f711ab573e251263bb3289a28317e2a1a71d459201183e9a10a5.css?body=1" for ::1 at 2016-01-04 15:31:52 +0200
+
+
+Started GET "/assets/sessions.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-01-04 15:31:52 +0200
+
+
+Started GET "/assets/users.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-01-04 15:31:52 +0200
+
+
+Started GET "/assets/jquery.self-a714331225dda820228db323939889f149aec0127aeb06255646b616ba1ca419.js?body=1" for ::1 at 2016-01-04 15:31:52 +0200
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for ::1 at 2016-01-04 15:31:52 +0200
+
+
+Started GET "/assets/jquery_ujs.self-d456baa54c1fa6be2ec3711f0a72ddf7a5b2f34a6b4f515f33767d6207b7d4b3.js?body=1" for ::1 at 2016-01-04 15:31:52 +0200
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for ::1 at 2016-01-04 15:31:52 +0200
+
+
+Started GET "/assets/messages.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-01-04 15:31:52 +0200
+
+
+Started GET "/assets/sessions.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-01-04 15:31:52 +0200
+
+
+Started GET "/assets/users.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-01-04 15:31:52 +0200
+
+
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for ::1 at 2016-01-04 15:31:52 +0200
+
+
+Started POST "/signup" for ::1 at 2016-01-04 15:31:54 +0200
+Processing by UsersController#new as HTML
+  Parameters: {"authenticity_token"=>"cJB4/6V5yDFMLqN6QU+xP+f68KY3WfduGzdgmIQUrYFwvLAKrOrjJPKzmNKIN/NYxI0gRymBMTyX8kYKq3f50g=="}
+  Rendered users/new.html.erb within layouts/application (4.2ms)
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 2]]
+Completed 200 OK in 43ms (Views: 37.4ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/users" for ::1 at 2016-01-04 15:32:02 +0200
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"X6AupmmTmXUm6cZsASzdJtDitQnaBzZSvUx7EW9F8nRfjOZTYACyYJh0/cTIVJ9B85Vl6MTf8AAxiV2DQCamJw==", "user"=>{"first_name"=>"vlad", "last_name"=>"vlad", "email"=>"vlad@vlad.com", "password"=>"[FILTERED]"}, "commit"=>"Signup"}
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "users"
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "users" ("first_name", "last_name", "email", "password_digest", "role", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["first_name", "vlad"], ["last_name", "vlad"], ["email", "vlad@vlad.com"], ["password_digest", "$2a$10$ElD9L6GBINHtE3b52kP7vudIIp6Ibzfe6xG0XPO5CVq7ACAqRj66O"], ["role", "admin"], ["created_at", "2016-01-04 13:32:02.167227"], ["updated_at", "2016-01-04 13:32:02.167227"]]
+  [1m[36m (0.7ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 69ms (ActiveRecord: 1.5ms)
+
+
+Started GET "/" for ::1 at 2016-01-04 15:32:02 +0200
+Processing by SessionsController#new as HTML
+  Rendered sessions/new.html.erb within layouts/application (1.5ms)
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 1]]
+Completed 200 OK in 30ms (Views: 28.6ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/signup" for ::1 at 2016-01-04 15:32:29 +0200
+Processing by UsersController#new as HTML
+  Parameters: {"authenticity_token"=>"jsvos6vPCp7OlxL7iHrYmbm9R8zAAc0cvisnwtHgeI+O5yBGolwhi3AKKVNBApr+msqXLd7ZC04y7gFQ/oMs3A=="}
+  Rendered users/new.html.erb within layouts/application (1.3ms)
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+Completed 200 OK in 31ms (Views: 20.9ms | ActiveRecord: 1.6ms)
+
+
+Started POST "/users" for ::1 at 2016-01-04 15:32:38 +0200
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"8BKOK0SGKp0Mxgrgosl1G/JmnGkOZZw+m8YFB2mIpRzwPkbeTRUBiLJbMUhrsTd80RFMiBC9WmwXAyOVRuvxTw==", "user"=>{"first_name"=>"a", "last_name"=>"a", "email"=>"a@a.com", "password"=>"[FILTERED]"}, "commit"=>"Signup"}
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "users"
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "users" ("first_name", "last_name", "email", "password_digest", "role", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["first_name", "a"], ["last_name", "a"], ["email", "a@a.com"], ["password_digest", "$2a$10$prhzX5TJqvF1FDkIobFRIuqB.wwYL.YA3cbgNwxbS0BLN3olyCHai"], ["role", "kurwa"], ["created_at", "2016-01-04 13:32:38.884829"], ["updated_at", "2016-01-04 13:32:38.884829"]]
+  [1m[36m (1.0ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 77ms (ActiveRecord: 1.5ms)
+
+
+Started GET "/" for ::1 at 2016-01-04 15:32:38 +0200
+Processing by SessionsController#new as HTML
+  Rendered sessions/new.html.erb within layouts/application (0.7ms)
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 2]]
+Completed 200 OK in 19ms (Views: 18.0ms | ActiveRecord: 0.2ms)
+
+
+Started POST "/login" for ::1 at 2016-01-04 15:38:44 +0200
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"GfnWLGoDPHMomPWIxxi6wEyB/GBi4YmDVJTcJ0VwRvwZ1R7ZY5AXZpYFziAOYPinb/YsgXw5T9HYUfq1ahMSrw==", "session"=>{"email"=>"vlad@vlad.com", "password"=>"[FILTERED]"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT 1[0m  [["email", "vlad@vlad.com"]]
+Redirected to http://localhost:3000/messages
+Completed 302 Found in 79ms (ActiveRecord: 1.5ms)
+
+
+Started GET "/messages" for ::1 at 2016-01-04 15:38:45 +0200
+Processing by MessagesController#index as HTML
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mMessage Load (0.3ms)[0m  [1mSELECT "messages".* FROM "messages"[0m
+  Rendered messages/index.html.erb within layouts/application (6.6ms)
+Completed 200 OK in 31ms (Views: 25.4ms | ActiveRecord: 1.5ms)
+
+
+Started POST "/admin" for ::1 at 2016-01-04 15:38:47 +0200
+Processing by MessagesController#admin as HTML
+  Parameters: {"authenticity_token"=>"EDSpwkpI0TqWD0PF6PkVkhY86j1qfu6wShVYntiBTh8QGGE3Q9v6LyiSeG0hgVf1NUs63HSmKOLG0H4M9+IaTA=="}
+  Rendered messages/admin.html.erb within layouts/application (0.9ms)
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 1]]
+Completed 200 OK in 18ms (Views: 16.9ms | ActiveRecord: 0.2ms)
+
+
+Started DELETE "/logout" for ::1 at 2016-01-04 15:39:00 +0200
+Processing by SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"t291L/QHXbvo90ERPd6Ti5N9ZVhtKridVpc3Qn6GADi3Q73a/ZR2rlZqern0ptHssAq1uXPyfs/aUhHQUeVUaw=="}
+Redirected to http://localhost:3000/
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2016-01-04 15:39:00 +0200
+Processing by SessionsController#new as HTML
+  Rendered sessions/new.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 16ms (Views: 15.6ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/login" for ::1 at 2016-01-04 15:39:06 +0200
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"wfHGoKDwZb/ETh8bRFmxcA3IYCW2N5WEm0hp7lCUwJ/B3Q5VqWNOqnrTJLONIfMXLr+wxKjvU9YXjU98f/eUzA==", "session"=>{"email"=>"a@a.com", "password"=>"[FILTERED]"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT 1[0m  [["email", "a@a.com"]]
+Redirected to http://localhost:3000/messages
+Completed 302 Found in 74ms (ActiveRecord: 0.2ms)
+
+
+Started GET "/messages" for ::1 at 2016-01-04 15:39:06 +0200
+Processing by MessagesController#index as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 2]]
+  [1m[36mMessage Load (0.2ms)[0m  [1mSELECT "messages".* FROM "messages"[0m
+  Rendered messages/index.html.erb within layouts/application (1.4ms)
+Completed 200 OK in 16ms (Views: 14.8ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/admin" for ::1 at 2016-01-04 15:39:12 +0200
+Processing by MessagesController#admin as HTML
+  Rendered messages/admin.html.erb within layouts/application (0.4ms)
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 2]]
+Completed 200 OK in 17ms (Views: 16.8ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/messages" for ::1 at 2016-01-04 15:40:42 +0200
+Processing by MessagesController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 2]]
+  [1m[35mMessage Load (0.2ms)[0m  SELECT "messages".* FROM "messages"
+  Rendered messages/index.html.erb within layouts/application (1.7ms)
+Completed 200 OK in 29ms (Views: 18.3ms | ActiveRecord: 2.3ms)
+
+
+Started GET "/assets/messages.self-1826f31c17a9f711ab573e251263bb3289a28317e2a1a71d459201183e9a10a5.css?body=1" for ::1 at 2016-01-04 15:40:42 +0200
+
+
+Started GET "/assets/sessions.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-01-04 15:40:42 +0200
+
+
+Started GET "/assets/users.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-01-04 15:40:42 +0200
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for ::1 at 2016-01-04 15:40:42 +0200
+
+
+Started GET "/assets/jquery_ujs.self-d456baa54c1fa6be2ec3711f0a72ddf7a5b2f34a6b4f515f33767d6207b7d4b3.js?body=1" for ::1 at 2016-01-04 15:40:42 +0200
+
+
+Started GET "/assets/jquery.self-a714331225dda820228db323939889f149aec0127aeb06255646b616ba1ca419.js?body=1" for ::1 at 2016-01-04 15:40:42 +0200
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for ::1 at 2016-01-04 15:40:42 +0200
+
+
+Started GET "/assets/messages.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-01-04 15:40:42 +0200
+
+
+Started GET "/assets/sessions.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-01-04 15:40:42 +0200
+
+
+Started GET "/assets/users.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-01-04 15:40:42 +0200
+
+
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for ::1 at 2016-01-04 15:40:42 +0200
+
+
+Started GET "/admin" for ::1 at 2016-01-04 15:40:48 +0200
+Processing by MessagesController#admin as HTML
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.0ms)
+
+NoMethodError (undefined method `admin?' for nil:NilClass):
+  app/controllers/messages_controller.rb:35:in `admin'
+
+
+  Rendered /Users/vladyslav/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (4.0ms)
+  Rendered /Users/vladyslav/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.8ms)
+  Rendered /Users/vladyslav/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.2ms)
+  Rendered /Users/vladyslav/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (51.5ms)
+  Rendered /Users/vladyslav/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_markup.html.erb (0.3ms)
+  Rendered /Users/vladyslav/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/vladyslav/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/vladyslav/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.2ms)
+  Rendered /Users/vladyslav/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/console.js.erb within layouts/javascript (49.0ms)
+  Rendered /Users/vladyslav/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (0.2ms)
+  Rendered /Users/vladyslav/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.3ms)
+  Rendered /Users/vladyslav/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (108.7ms)
+
+
+Started GET "/admin" for ::1 at 2016-01-04 15:40:48 +0200
+Processing by MessagesController#admin as HTML
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.0ms)
+
+NoMethodError (undefined method `admin?' for nil:NilClass):
+  app/controllers/messages_controller.rb:35:in `admin'
+
+
+  Rendered /Users/vladyslav/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (3.1ms)
+  Rendered /Users/vladyslav/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.3ms)
+  Rendered /Users/vladyslav/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.7ms)
+  Rendered /Users/vladyslav/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (50.1ms)
+  Rendered /Users/vladyslav/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_markup.html.erb (0.5ms)
+  Rendered /Users/vladyslav/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.2ms)
+  Rendered /Users/vladyslav/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/vladyslav/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.2ms)
+  Rendered /Users/vladyslav/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/console.js.erb within layouts/javascript (40.9ms)
+  Rendered /Users/vladyslav/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /Users/vladyslav/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/vladyslav/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (100.5ms)
+
+
+Started GET "/admin" for ::1 at 2016-01-04 15:41:34 +0200
+Processing by MessagesController#admin as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 2]]
+Redirected to http://localhost:3000messages
+Completed 302 Found in 7ms (ActiveRecord: 1.4ms)
+
+
+Started GET "/admin" for ::1 at 2016-01-04 15:41:34 +0200
+Processing by MessagesController#admin as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 2]]
+Redirected to http://localhost:3000messages
+Completed 302 Found in 1ms (ActiveRecord: 0.2ms)
+
+
+Started GET "/admin" for ::1 at 2016-01-04 15:41:34 +0200
+Processing by MessagesController#admin as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 2]]
+Redirected to http://localhost:3000messages
+Completed 302 Found in 2ms (ActiveRecord: 0.2ms)
+
+
+Started GET "/admin" for ::1 at 2016-01-04 15:41:35 +0200
+Processing by MessagesController#admin as HTML
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 2]]
+Redirected to http://localhost:3000messages
+Completed 302 Found in 1ms (ActiveRecord: 0.1ms)
+
+
+Started GET "/admin" for ::1 at 2016-01-04 15:41:35 +0200
+Processing by MessagesController#admin as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 2]]
+Redirected to http://localhost:3000messages
+Completed 302 Found in 2ms (ActiveRecord: 0.2ms)
+
+
+Started GET "/messages" for ::1 at 2016-01-04 15:41:39 +0200
+Processing by MessagesController#index as HTML
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 2]]
+  [1m[36mMessage Load (0.2ms)[0m  [1mSELECT "messages".* FROM "messages"[0m
+  Rendered messages/index.html.erb within layouts/application (1.8ms)
+Completed 200 OK in 25ms (Views: 19.2ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/assets/messages.self-1826f31c17a9f711ab573e251263bb3289a28317e2a1a71d459201183e9a10a5.css?body=1" for ::1 at 2016-01-04 15:41:39 +0200
+
+
+Started GET "/assets/sessions.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-01-04 15:41:39 +0200
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for ::1 at 2016-01-04 15:41:39 +0200
+
+
+Started GET "/assets/jquery.self-a714331225dda820228db323939889f149aec0127aeb06255646b616ba1ca419.js?body=1" for ::1 at 2016-01-04 15:41:39 +0200
+
+
+Started GET "/assets/users.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-01-04 15:41:39 +0200
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for ::1 at 2016-01-04 15:41:39 +0200
+
+
+Started GET "/assets/jquery_ujs.self-d456baa54c1fa6be2ec3711f0a72ddf7a5b2f34a6b4f515f33767d6207b7d4b3.js?body=1" for ::1 at 2016-01-04 15:41:39 +0200
+
+
+Started GET "/assets/messages.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-01-04 15:41:39 +0200
+
+
+Started GET "/assets/sessions.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-01-04 15:41:39 +0200
+
+
+Started GET "/assets/users.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-01-04 15:41:39 +0200
+
+
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for ::1 at 2016-01-04 15:41:39 +0200
+
+
+Started GET "/admin" for ::1 at 2016-01-04 15:41:42 +0200
+Processing by MessagesController#admin as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 2]]
+Redirected to http://localhost:3000messages
+Completed 302 Found in 1ms (ActiveRecord: 0.2ms)
+
+
+Started GET "/admin" for ::1 at 2016-01-04 15:41:42 +0200
+Processing by MessagesController#admin as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 2]]
+Redirected to http://localhost:3000messages
+Completed 302 Found in 1ms (ActiveRecord: 0.2ms)
+
+
+Started GET "/admin" for ::1 at 2016-01-04 15:41:42 +0200
+Processing by MessagesController#admin as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 2]]
+Redirected to http://localhost:3000messages
+Completed 302 Found in 1ms (ActiveRecord: 0.2ms)
+
+
+Started GET "/admin" for ::1 at 2016-01-04 15:41:42 +0200
+Processing by MessagesController#admin as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 2]]
+Redirected to http://localhost:3000messages
+Completed 302 Found in 1ms (ActiveRecord: 0.1ms)
+
+
+Started GET "/admin" for ::1 at 2016-01-04 15:41:42 +0200
+Processing by MessagesController#admin as HTML
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 2]]
+Redirected to http://localhost:3000messages
+Completed 302 Found in 1ms (ActiveRecord: 0.1ms)
+
+
+Started GET "/admin" for ::1 at 2016-01-04 15:41:42 +0200
+Processing by MessagesController#admin as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 2]]
+Redirected to http://localhost:3000messages
+Completed 302 Found in 1ms (ActiveRecord: 0.1ms)
+
+
+Started GET "/admin" for ::1 at 2016-01-04 15:41:42 +0200
+Processing by MessagesController#admin as HTML
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 2]]
+Redirected to http://localhost:3000messages
+Completed 302 Found in 1ms (ActiveRecord: 0.1ms)
+
+
+Started GET "/admin" for ::1 at 2016-01-04 15:41:43 +0200
+Processing by MessagesController#admin as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 2]]
+Redirected to http://localhost:3000messages
+Completed 302 Found in 1ms (ActiveRecord: 0.2ms)
+
+
+Started GET "/admin" for ::1 at 2016-01-04 15:41:43 +0200
+Processing by MessagesController#admin as HTML
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 2]]
+Redirected to http://localhost:3000messages
+Completed 302 Found in 1ms (ActiveRecord: 0.1ms)
+
+
+Started GET "/admin" for ::1 at 2016-01-04 15:41:43 +0200
+Processing by MessagesController#admin as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 2]]
+Redirected to http://localhost:3000messages
+Completed 302 Found in 1ms (ActiveRecord: 0.1ms)
+
+
+Started GET "/admin" for ::1 at 2016-01-04 15:41:43 +0200
+Processing by MessagesController#admin as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 2]]
+Redirected to http://localhost:3000messages
+Completed 302 Found in 1ms (ActiveRecord: 0.2ms)
+
+
+Started GET "/admin" for ::1 at 2016-01-04 15:41:43 +0200
+Processing by MessagesController#admin as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 2]]
+Redirected to http://localhost:3000messages
+Completed 302 Found in 1ms (ActiveRecord: 0.2ms)
+
+
+Started GET "/admin" for ::1 at 2016-01-04 15:41:43 +0200
+Processing by MessagesController#admin as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 2]]
+Redirected to http://localhost:3000messages
+Completed 302 Found in 1ms (ActiveRecord: 0.2ms)
+
+
+Started GET "/admin" for ::1 at 2016-01-04 15:41:48 +0200
+Processing by MessagesController#admin as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 2]]
+Redirected to http://localhost:3000messages
+Completed 302 Found in 1ms (ActiveRecord: 0.1ms)
+
+
+Started GET "/admin" for ::1 at 2016-01-04 15:42:18 +0200
+Processing by MessagesController#admin as HTML
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 2]]
+  Rendered messages/admin.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 24ms (Views: 17.0ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/assets/messages.self-1826f31c17a9f711ab573e251263bb3289a28317e2a1a71d459201183e9a10a5.css?body=1" for ::1 at 2016-01-04 15:42:18 +0200
+
+
+Started GET "/assets/users.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-01-04 15:42:18 +0200
+
+
+Started GET "/assets/jquery.self-a714331225dda820228db323939889f149aec0127aeb06255646b616ba1ca419.js?body=1" for ::1 at 2016-01-04 15:42:18 +0200
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for ::1 at 2016-01-04 15:42:18 +0200
+
+
+Started GET "/assets/sessions.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-01-04 15:42:18 +0200
+
+
+Started GET "/assets/jquery_ujs.self-d456baa54c1fa6be2ec3711f0a72ddf7a5b2f34a6b4f515f33767d6207b7d4b3.js?body=1" for ::1 at 2016-01-04 15:42:18 +0200
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for ::1 at 2016-01-04 15:42:18 +0200
+
+
+Started GET "/assets/messages.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-01-04 15:42:18 +0200
+
+
+Started GET "/assets/sessions.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-01-04 15:42:18 +0200
+
+
+Started GET "/assets/users.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-01-04 15:42:18 +0200
+
+
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for ::1 at 2016-01-04 15:42:18 +0200
+
+
+Started GET "/admin" for ::1 at 2016-01-04 15:42:44 +0200
+Processing by MessagesController#admin as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 2]]
+Redirected to http://localhost:3000/messages
+Completed 302 Found in 8ms (ActiveRecord: 1.5ms)
+
+
+Started GET "/messages" for ::1 at 2016-01-04 15:42:44 +0200
+Processing by MessagesController#index as HTML
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 2]]
+  [1m[36mMessage Load (0.1ms)[0m  [1mSELECT "messages".* FROM "messages"[0m
+  Rendered messages/index.html.erb within layouts/application (1.6ms)
+Completed 200 OK in 23ms (Views: 17.8ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/assets/messages.self-1826f31c17a9f711ab573e251263bb3289a28317e2a1a71d459201183e9a10a5.css?body=1" for ::1 at 2016-01-04 15:42:44 +0200
+
+
+Started GET "/assets/sessions.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-01-04 15:42:44 +0200
+
+
+Started GET "/assets/jquery.self-a714331225dda820228db323939889f149aec0127aeb06255646b616ba1ca419.js?body=1" for ::1 at 2016-01-04 15:42:44 +0200
+
+
+Started GET "/assets/users.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-01-04 15:42:44 +0200
+
+
+Started GET "/assets/jquery_ujs.self-d456baa54c1fa6be2ec3711f0a72ddf7a5b2f34a6b4f515f33767d6207b7d4b3.js?body=1" for ::1 at 2016-01-04 15:42:44 +0200
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for ::1 at 2016-01-04 15:42:44 +0200
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for ::1 at 2016-01-04 15:42:44 +0200
+
+
+Started GET "/assets/messages.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-01-04 15:42:44 +0200
+
+
+Started GET "/assets/sessions.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-01-04 15:42:44 +0200
+
+
+Started GET "/assets/users.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-01-04 15:42:44 +0200
+
+
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for ::1 at 2016-01-04 15:42:44 +0200
+
+
+Started GET "/ADMIN" for ::1 at 2016-01-04 15:42:51 +0200
+
+ActionController::RoutingError (No route matches [GET] "/ADMIN"):
+  actionpack (4.2.5) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  web-console (2.2.1) lib/web_console/middleware.rb:39:in `call'
+  actionpack (4.2.5) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.5) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.5) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.5) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.5) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.5) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.5) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.5) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.5) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.5) lib/action_dispatch/middleware/static.rb:116:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.5) lib/rails/engine.rb:518:in `call'
+  railties (4.2.5) lib/rails/application.rb:165:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+  /Users/vladyslav/.rbenv/versions/2.2.3/lib/ruby/2.2.0/webrick/httpserver.rb:138:in `service'
+  /Users/vladyslav/.rbenv/versions/2.2.3/lib/ruby/2.2.0/webrick/httpserver.rb:94:in `run'
+  /Users/vladyslav/.rbenv/versions/2.2.3/lib/ruby/2.2.0/webrick/server.rb:294:in `block in start_thread'
+
+
+  Rendered /Users/vladyslav/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.5ms)
+  Rendered /Users/vladyslav/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/routes/_route.html.erb (1.3ms)
+  Rendered /Users/vladyslav/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/routes/_table.html.erb (2.6ms)
+  Rendered /Users/vladyslav/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.1ms)
+  Rendered /Users/vladyslav/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (75.9ms)
+  Rendered /Users/vladyslav/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_markup.html.erb (0.3ms)
+  Rendered /Users/vladyslav/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/vladyslav/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/vladyslav/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.2ms)
+  Rendered /Users/vladyslav/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/console.js.erb within layouts/javascript (45.8ms)
+  Rendered /Users/vladyslav/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (0.2ms)
+  Rendered /Users/vladyslav/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/vladyslav/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (100.8ms)
+
+
+Started GET "/admin" for ::1 at 2016-01-04 15:42:59 +0200
+Processing by MessagesController#admin as HTML
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 2]]
+Redirected to http://localhost:3000/messages
+Completed 302 Found in 1ms (ActiveRecord: 0.1ms)
+
+
+Started GET "/messages" for ::1 at 2016-01-04 15:42:59 +0200
+Processing by MessagesController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 2]]
+  [1m[35mMessage Load (0.2ms)[0m  SELECT "messages".* FROM "messages"
+  Rendered messages/index.html.erb within layouts/application (1.3ms)
+Completed 200 OK in 19ms (Views: 17.9ms | ActiveRecord: 0.3ms)
+
+
+Started DELETE "/logout" for ::1 at 2016-01-04 15:43:03 +0200
+Processing by SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"bMIF/PhlAoDc3Svber7o+xHeiih+zjcy+wF+Q/6ZikJs7s0J8fYplWJAEHOzxqqcMqlayWAW8WB3xFjR0freEQ=="}
+Redirected to http://localhost:3000/
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2016-01-04 15:43:03 +0200
+Processing by SessionsController#new as HTML
+  Rendered sessions/new.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 18ms (Views: 17.4ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/login" for ::1 at 2016-01-04 15:43:10 +0200
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"3FYWO8YpzFxgYDFg00PrOan3rBgbcRjw6GktykBUl37cet7Oz7rnSd79CsgaO6leioB8+QWp3qJkrAtYbzfDLQ==", "session"=>{"email"=>"vlad@vlad.com", "password"=>"[FILTERED]"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT 1[0m  [["email", "vlad@vlad.com"]]
+Redirected to http://localhost:3000/messages
+Completed 302 Found in 68ms (ActiveRecord: 0.2ms)
+
+
+Started GET "/messages" for ::1 at 2016-01-04 15:43:10 +0200
+Processing by MessagesController#index as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mMessage Load (0.2ms)[0m  [1mSELECT "messages".* FROM "messages"[0m
+  Rendered messages/index.html.erb within layouts/application (1.5ms)
+Completed 200 OK in 18ms (Views: 16.3ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/admin" for ::1 at 2016-01-04 15:43:12 +0200
+Processing by MessagesController#admin as HTML
+  Parameters: {"authenticity_token"=>"EmCq7/1Y4tvUX9pl0jeVhvL4b9Pd0+7Zd5Tek0sH++8STGIa9MvJzmrC4c0bT9fh0Y+/MsMLKIv7UfgBZGSvvA=="}
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 1]]
+  Rendered messages/admin.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 18ms (Views: 16.7ms | ActiveRecord: 0.1ms)

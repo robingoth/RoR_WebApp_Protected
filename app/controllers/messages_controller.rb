@@ -13,9 +13,11 @@ class MessagesController < ApplicationController
 	end
 
 	def create
-    	@message = Message.new(message_params)
-    	if @message.save
-      	redirect_to '/messages'
+    @current_user ||= User.find(session[:user_id])
+    @message = Message.new(message_params)
+    @message.sender = @current_user.first_name
+    if @message.save
+      redirect_to '/messages'
     else
      	render 'new'
     end
